@@ -1,0 +1,62 @@
+
+flameskull.png
+size: 256,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+backflame1
+  rotate: false
+  xy: 97, 86
+  size: 97, 90
+  orig: 97, 90
+  offset: 0, 0
+  index: -1
+backflame2
+  rotate: false
+  xy: 97, 1
+  size: 109, 83
+  orig: 109, 83
+  offset: 0, 0
+  index: -1
+backflame3
+  rotate: false
+  xy: 1, 1
+  size: 94, 103
+  orig: 94, 103
+  offset: 0, 0
+  index: -1
+jaw
+  rotate: false
+  xy: 1, 194
+  size: 38, 25
+  orig: 38, 25
+  offset: 0, 0
+  index: -1
+skull
+  rotate: false
+  xy: 1, 261
+  size: 91, 57
+  orig: 91, 57
+  offset: 0, 0
+  index: -1
+glow-eyes
+  rotate: false
+  xy: 41, 194
+  size: 18, 4
+  orig: 18, 4
+  offset: 0, 0
+  index: -1
+front-glow-2
+  rotate: false
+  xy: 1, 106
+  size: 82, 86
+  orig: 82, 86
+  offset: 0, 0
+  index: -1
+front-glow
+  rotate: false
+  xy: 85, 178
+  size: 79, 81
+  orig: 79, 81
+  offset: 0, 0
+  index: -1

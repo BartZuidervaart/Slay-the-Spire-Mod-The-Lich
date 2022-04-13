@@ -1,0 +1,10 @@
+{
+  "modid" : "TheLich",
+  "name": "The Lich",
+  "Author_list" : ["An awful person"],
+  "description": "A lich character",
+  "version": "0.1",
+  "sts_version": "2.2.0",
+  "mts_version": "3.6.3",
+  "dependencies": ["basemod" ]
+}

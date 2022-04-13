@@ -1,0 +1,9 @@
+{
+  "Vampire_Amulet": {
+    "NAME": "Vampire Amulet",
+    "FLAVOR": "A mysterious amulet that seems to draw in life force.",
+    "DESCRIPTIONS": [
+      "On (non minion) Kill : Heal 2 HP."
+    ]
+  }
+}

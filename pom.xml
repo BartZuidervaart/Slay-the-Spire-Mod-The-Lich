@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>TheLich</groupId>
+    <artifactId>TheLich</artifactId>
+    <version>v1.0.0</version>
+    <packaging>jar</packaging>
+
+    <name>ultra.lich.TheLich</name>
+    <description>A character mod for Slay the spire</description>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.evacipated.cardcrawl.mod</groupId>
+            <artifactId>stslib</artifactId>
+            <version>2.2.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/../lib/desktop-1.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>basemod</groupId>
+            <artifactId>basemod</artifactId>
+            <version>5.0.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/../lib/BaseMod.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.evacipated.cardcrawl</groupId>
+            <artifactId>ModTheSpire</artifactId>
+            <version>3.6.3</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/../lib/ModTheSpire.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>friendlyminions</groupId>
+            <artifactId>FriendlyMinions</artifactId>
+            <version>0.1.2</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/../lib/FriendlyMinions.jar</systemPath>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>ultra.lich.TheLich</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.10.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <configuration>
+                            <target>
+                                <copy file="target/ultra.lich.TheLich.jar" tofile="../lib/TheLich.jar"/>
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
