@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import kobting.friendlyminions.characters.AbstractPlayerWithMinions;
 import ultra.lich.actions.SacrificeMinionAction;
 import ultra.lich.images.ImageLibrary;
-import ultra.lich.player.LichClass;
+import ultra.lich.powers.SummonerPower;
 
 public class DetonateCard extends AbstractLichCard {
 
@@ -30,15 +30,15 @@ public class DetonateCard extends AbstractLichCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster abstractMonster) {
-        if(p instanceof LichClass){
-            LichClass caster = (LichClass) p;
+        if(p.hasPower(SummonerPower.POWER_ID)){
+            SummonerPower caster = (SummonerPower) p.getPower(SummonerPower.POWER_ID);
 
             this.damage = this.upgraded ? 15 : 10;
-            damage = damage * caster.getMinions().monsters.size();
+            damage = damage * caster.minions.monsters.size();
             addToBot(new DamageAllEnemiesAction(p, damage, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.FIRE));
 
             //kill them all
-            caster.getMinions().monsters.forEach(monster -> addToBot(new SacrificeMinionAction(caster,monster)));
+            caster.minions.monsters.forEach(monster -> addToBot(new SacrificeMinionAction(caster,monster)));
         }
     }
 

@@ -7,7 +7,7 @@ import ultra.lich.actions.SummonMinionAction;
 import ultra.lich.eNums.LichCardEnum;
 import ultra.lich.images.ImageLibrary;
 import ultra.lich.minions.FlameSkull;
-import ultra.lich.player.LichClass;
+import ultra.lich.powers.SummonerPower;
 
 public class SwiftReinforcementsCard extends AbstractLichCard {
 
@@ -29,8 +29,8 @@ public class SwiftReinforcementsCard extends AbstractLichCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster abstractMonster) {
-        if (p instanceof LichClass) {
-            LichClass caster = (LichClass) p;
+        if (p.hasPower(SummonerPower.POWER_ID)) {
+            SummonerPower caster = (SummonerPower) p.getPower(SummonerPower.POWER_ID);
             for (int i = 0; i < (this.upgraded ? 3 : 2); i++) {
                 FlameSkull minion = new FlameSkull(caster, 3, 3, 1, 5, -1, 1);
                 addToBot(new SummonMinionAction(caster, minion));

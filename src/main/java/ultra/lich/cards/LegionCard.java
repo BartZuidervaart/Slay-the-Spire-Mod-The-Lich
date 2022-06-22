@@ -6,13 +6,11 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.LockOnPower;
 import kobting.friendlyminions.characters.AbstractPlayerWithMinions;
 import ultra.lich.images.ImageLibrary;
-import ultra.lich.player.LichClass;
 import ultra.lich.powers.DeadMarkedPower;
+import ultra.lich.powers.SummonerPower;
 
 public class LegionCard extends AbstractLichCard {
 
@@ -33,17 +31,17 @@ public class LegionCard extends AbstractLichCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster abstractMonster) {
-        if(p instanceof LichClass){
-            LichClass player = (LichClass) p;
+        if(p.hasPower(SummonerPower.POWER_ID)){
+            SummonerPower caster = (SummonerPower) p.getPower(SummonerPower.POWER_ID);
 
             int damage = 5;
             if(this.upgraded){
                 damage = 7;
             }
-            damage = damage * player.getMinions().monsters.size();
+            damage = damage * caster.minions.monsters.size();
             addToBot(new DamageAction(abstractMonster,
                     new DamageInfo(p, damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-            addToBot(new ApplyPowerAction(abstractMonster, p, new DeadMarkedPower(abstractMonster, player),1));
+            addToBot(new ApplyPowerAction(abstractMonster, p, new DeadMarkedPower(abstractMonster, caster),1));
         }
     }
 

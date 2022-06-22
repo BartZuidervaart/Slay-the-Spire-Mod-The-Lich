@@ -4,25 +4,25 @@ import basemod.animations.SpineAnimation;
 import com.badlogic.gdx.graphics.Texture;
 import ultra.lich.minionactions.LichMinionMove;
 import ultra.lich.minionactions.LichMinionMoveGroup;
-import ultra.lich.player.LichClass;
+import ultra.lich.powers.SummonerPower;
 
 import java.util.ArrayList;
 
 public abstract class AbstractControlableLichMinion extends AbstractLichMinion{
 
-    public AbstractControlableLichMinion(String name, String id, int maxHealth, SpineAnimation animation, String animationName, LichClass caster, int baseAttack, int baseDefense) {
+    public AbstractControlableLichMinion(String name, String id, int maxHealth, SpineAnimation animation, String animationName, SummonerPower caster, int baseAttack, int baseDefense) {
         super(name, id, maxHealth, animation, animationName, caster, baseAttack, baseDefense);
         this.moves = new LichMinionMoveGroup(this,this.drawX, this.drawY);
         this.addMoves();
     }
 
-    public AbstractControlableLichMinion(String name, String id, int maxHealth, String imgUrl, LichClass caster, int baseAttack, int baseDefense) {
+    public AbstractControlableLichMinion(String name, String id, int maxHealth, String imgUrl, SummonerPower caster, int baseAttack, int baseDefense) {
         super(name, id, maxHealth, imgUrl, caster, baseAttack, baseDefense);
         this.moves = new LichMinionMoveGroup(this,this.drawX, this.drawY);
         this.addMoves();
     }
 
-    public AbstractControlableLichMinion(String name, String id, int maxHealth, String imgUrl, LichClass caster, Texture[] attackIntents) {
+    public AbstractControlableLichMinion(String name, String id, int maxHealth, String imgUrl, SummonerPower caster, Texture[] attackIntents) {
         super(name, id, maxHealth, imgUrl, caster, attackIntents);
         this.moves = new LichMinionMoveGroup(this,this.drawX, this.drawY);
         this.addMoves();

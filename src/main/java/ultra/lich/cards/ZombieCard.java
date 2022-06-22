@@ -7,7 +7,7 @@ import ultra.lich.actions.SummonMinionAction;
 import ultra.lich.eNums.LichCardEnum;
 import ultra.lich.images.ImageLibrary;
 import ultra.lich.minions.ZombieMinion;
-import ultra.lich.player.LichClass;
+import ultra.lich.powers.SummonerPower;
 
 public class ZombieCard extends AbstractLichCard {
 
@@ -25,8 +25,8 @@ public class ZombieCard extends AbstractLichCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (p instanceof LichClass) {
-            LichClass caster = (LichClass) p;
+        if (p.hasPower(SummonerPower.POWER_ID)) {
+            SummonerPower caster = (SummonerPower) p.getPower(SummonerPower.POWER_ID);
             ZombieMinion minion = this.upgraded ? new ZombieMinion(caster, 10, 5) : new ZombieMinion(caster, 5, 5);
             addToBot(new SummonMinionAction(caster, minion));
         }

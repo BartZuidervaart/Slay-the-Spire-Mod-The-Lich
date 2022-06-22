@@ -3,11 +3,10 @@ package ultra.lich.minions;
 import basemod.animations.SpineAnimation;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import ultra.lich.player.LichClass;
 import ultra.lich.powers.ExplosiveDeathPower;
 import ultra.lich.powers.SoakPower;
 import ultra.lich.powers.SummonSicknessPower;
+import ultra.lich.powers.SummonerPower;
 
 public class FlameSkull extends AbstractLichMinion{
 
@@ -18,11 +17,11 @@ public class FlameSkull extends AbstractLichMinion{
     private int explosive;
     private int summonSickness;
 
-    public FlameSkull(LichClass caster){
+    public FlameSkull(SummonerPower caster){
         this(caster,3,3,1,3,-1,1);
     }
 
-    public FlameSkull(LichClass caster, int hp, int attack, int defense, int soak, int explosive, int summonSickness) {
+    public FlameSkull(SummonerPower caster, int hp, int attack, int defense, int soak, int explosive, int summonSickness) {
         super(NAME, ID, hp, new SpineAnimation("img/minions/flameskull.atlas","img/minions/flameskull.json",1.2f), "animtion0", caster,attack,defense);
         this.soak = soak;
         this.explosive = explosive;

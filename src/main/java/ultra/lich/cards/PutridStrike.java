@@ -7,7 +7,6 @@ import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.PoisonPower;
 import ultra.lich.actions.SummonMinionAction;
@@ -15,7 +14,7 @@ import ultra.lich.cards.status.FleshRot;
 import ultra.lich.eNums.LichCardEnum;
 import ultra.lich.images.ImageLibrary;
 import ultra.lich.minions.ClawMinion;
-import ultra.lich.player.LichClass;
+import ultra.lich.powers.SummonerPower;
 
 public class PutridStrike extends AbstractLichCard {
     public static final String ID = "TheLich:PutridStrike";
@@ -52,8 +51,8 @@ public class PutridStrike extends AbstractLichCard {
                 AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         addToBot(new ApplyPowerAction(m, p, new PoisonPower(m, p, poison)));
 
-        if (p instanceof LichClass) {
-            LichClass caster = (LichClass) p;
+        if (p.hasPower(SummonerPower.POWER_ID)) {
+            SummonerPower caster = (SummonerPower) p.getPower(SummonerPower.POWER_ID);
             addToBot(new SummonMinionAction(caster,new ClawMinion(caster, 2,5,0,1)));
         }
         this.addToBot(new MakeTempCardInHandAction(new FleshRot(),1));

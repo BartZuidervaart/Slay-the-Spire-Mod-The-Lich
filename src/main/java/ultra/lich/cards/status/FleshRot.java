@@ -10,8 +10,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.PoisonPower;
 import ultra.lich.images.ImageLibrary;
-import ultra.lich.player.LichClass;
 import ultra.lich.powers.AbstractLichPower;
+import ultra.lich.powers.SummonerPower;
 import ultra.lich.relics.AbstractLichRelic;
 
 public class FleshRot extends CustomCard {
@@ -40,8 +40,9 @@ public class FleshRot extends CustomCard {
                     ((AbstractLichRelic)relic).obtainedFleshRotPoison(this.magicNumber);
                 }
             });
-            if(p instanceof LichClass){
-                ((LichClass)p).getMinions().monsters.forEach(monster -> {
+            if(p.hasPower(SummonerPower.POWER_ID)){
+                SummonerPower caster = (SummonerPower)p.getPower(SummonerPower.POWER_ID);
+                caster.minions.monsters.forEach(monster -> {
                     monster.powers.forEach(power -> {
                         if(power instanceof AbstractLichPower){
                             ((AbstractLichPower)power).obtainedFleshRotPoison(this.magicNumber);

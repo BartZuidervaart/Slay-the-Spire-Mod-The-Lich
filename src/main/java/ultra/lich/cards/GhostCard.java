@@ -7,8 +7,7 @@ import ultra.lich.actions.SummonMinionAction;
 import ultra.lich.eNums.LichCardEnum;
 import ultra.lich.images.ImageLibrary;
 import ultra.lich.minions.GhostMinion;
-import ultra.lich.minions.WraithMinion;
-import ultra.lich.player.LichClass;
+import ultra.lich.powers.SummonerPower;
 
 public class GhostCard extends AbstractLichCard {
 
@@ -27,8 +26,8 @@ public class GhostCard extends AbstractLichCard {
 
     public void use(AbstractPlayer p, AbstractMonster m) {
 
-        if (p instanceof LichClass) {
-            LichClass caster = (LichClass) p;
+        if (p.hasPower(SummonerPower.POWER_ID)) {
+            SummonerPower caster = (SummonerPower) p.getPower(SummonerPower.POWER_ID);
             GhostMinion minion = this.upgraded ? new GhostMinion(caster, 15, 1, 5,2) : new GhostMinion(caster, 10, 1, 3,1);
             addToBot(new SummonMinionAction(caster,minion));
         }

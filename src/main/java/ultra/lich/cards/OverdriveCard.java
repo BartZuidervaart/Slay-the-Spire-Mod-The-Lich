@@ -3,14 +3,13 @@ package ultra.lich.cards;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import ultra.lich.images.ImageLibrary;
 import ultra.lich.minions.AbstractLichMinion;
-import ultra.lich.player.LichClass;
 import ultra.lich.powers.AttackPower;
 import ultra.lich.powers.SummonSicknessPower;
+import ultra.lich.powers.SummonerPower;
 
 public class OverdriveCard extends AbstractLichCard {
 
@@ -31,9 +30,9 @@ public class OverdriveCard extends AbstractLichCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster abstractMonster) {
-        if(p instanceof LichClass){
-            LichClass player = (LichClass) p;
-            player.getMinions().monsters.forEach(
+        if(p.hasPower(SummonerPower.POWER_ID)){
+            SummonerPower caster = (SummonerPower) p.getPower(SummonerPower.POWER_ID);
+            caster.minions.monsters.forEach(
                     monster -> {
                         if(monster instanceof AbstractLichMinion){
                             if(this.upgraded){
@@ -51,7 +50,7 @@ public class OverdriveCard extends AbstractLichCard {
                                 AbstractPower sickness = monster.getPower(SummonSicknessPower.POWER_ID);
                                 sickness.amount = sickness.amount + 3;
                             } else {
-                                addToBot(new ApplyPowerAction(monster, player, new SummonSicknessPower(monster, 3),1)); //slowly dies
+                                addToBot(new ApplyPowerAction(monster, caster.owner, new SummonSicknessPower(monster, 3),1)); //slowly dies
                             }
                         }
                     }

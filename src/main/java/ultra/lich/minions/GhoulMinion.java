@@ -5,8 +5,8 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import ultra.lich.cards.status.CannibalizeCard;
-import ultra.lich.player.LichClass;
 import ultra.lich.powers.SummonSicknessPower;
+import ultra.lich.powers.SummonerPower;
 
 public class GhoulMinion  extends AbstractLichMinion {
 
@@ -15,7 +15,7 @@ public class GhoulMinion  extends AbstractLichMinion {
 
     private int summonSickness;
 
-    public GhoulMinion(LichClass caster, int hp, int attack, int defense, int summonSickness) {
+    public GhoulMinion(SummonerPower caster, int hp, int attack, int defense, int summonSickness) {
         super(NAME, ID, hp, new SpineAnimation("img/minions/Ghoul.atlas", "img/minions/Ghoul.json", 0.7f), "animtion0", caster, attack, defense);
         this.summonSickness = summonSickness;
     }

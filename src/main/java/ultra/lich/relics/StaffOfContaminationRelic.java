@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.powers.PoisonPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import ultra.lich.images.ImageLibrary;
-import ultra.lich.player.LichClass;
+import ultra.lich.powers.SummonerPower;
 
 public class StaffOfContaminationRelic extends AbstractLichRelic {
 
@@ -33,8 +33,9 @@ public class StaffOfContaminationRelic extends AbstractLichRelic {
     public void obtainedFleshRotPoison(int amount){
         super.obtainedFleshRotPoison(amount);
         AbstractPlayer player = AbstractDungeon.player;
-        if(player instanceof LichClass){
-            ((LichClass) player).getMinions().monsters.forEach(monster -> {
+        if(player.hasPower(SummonerPower.POWER_ID)){
+            SummonerPower caster = (SummonerPower)player.getPower(SummonerPower.POWER_ID);
+            caster.minions.monsters.forEach(monster -> {
                 this.addToBot(new ApplyPowerAction(monster, player, new PoisonPower(monster, player, 1), 1, AbstractGameAction.AttackEffect.POISON));
             });
         }

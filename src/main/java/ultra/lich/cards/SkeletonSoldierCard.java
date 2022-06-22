@@ -9,7 +9,7 @@ import ultra.lich.eNums.LichCardEnum;
 import ultra.lich.minionactions.MinionTargeting;
 import ultra.lich.images.ImageLibrary;
 import ultra.lich.minions.SkeletonSoldier;
-import ultra.lich.player.LichClass;
+import ultra.lich.powers.SummonerPower;
 
 public class SkeletonSoldierCard extends AbstractLichCard {
 
@@ -32,8 +32,8 @@ public class SkeletonSoldierCard extends AbstractLichCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster abstractMonster) {
         AbstractMonster target = MinionTargeting.getTarget(this);
-        if (p instanceof LichClass) {
-            LichClass caster = (LichClass) p;
+        if (p.hasPower(SummonerPower.POWER_ID)) {
+            SummonerPower caster = (SummonerPower) p.getPower(SummonerPower.POWER_ID);
             SkeletonSoldier minion = this.upgraded ? new SkeletonSoldier(caster,15,7,7) : new SkeletonSoldier(caster,10,5,5);
             addToBot(new SacrificeMinionAction(caster,target));
             addToBot(new SummonMinionAction(caster,minion));

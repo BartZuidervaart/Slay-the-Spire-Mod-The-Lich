@@ -6,9 +6,8 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import ultra.lich.actions.SummonMinionAction;
 import ultra.lich.eNums.LichCardEnum;
 import ultra.lich.images.ImageLibrary;
-import ultra.lich.minions.ClawMinion;
 import ultra.lich.minions.FlameSkull;
-import ultra.lich.player.LichClass;
+import ultra.lich.powers.SummonerPower;
 
 public class FlameSkullCard extends AbstractLichCard {
 
@@ -30,8 +29,8 @@ public class FlameSkullCard extends AbstractLichCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster abstractMonster) {
-        if (p instanceof LichClass) {
-            LichClass caster = (LichClass) p;
+        if (p.hasPower(SummonerPower.POWER_ID)) {
+            SummonerPower caster = (SummonerPower) p.getPower(SummonerPower.POWER_ID);
                 FlameSkull minion = this.upgraded ? new FlameSkull(caster,3,6,1,6,-1,1) : new FlameSkull(caster,3,3,1,3,-1,1);
                 minion.attackTarget = abstractMonster;
                 addToBot(new SummonMinionAction(caster,minion));

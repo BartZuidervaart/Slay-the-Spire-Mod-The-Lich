@@ -61,7 +61,7 @@ public class ExplosiveDeathPower extends AbstractLichPower {
                 if (minion.hasPower(AttackPower.POWER_ID)) {
                     attack += minion.getPower(AttackPower.POWER_ID).amount * 3;
                 }
-                addToBot(new DamageAllEnemiesAction(minion.getCaster(), attack, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.FIRE));
+                addToBot(new DamageAllEnemiesAction(AbstractDungeon.player, attack, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.FIRE));
                 this.used = true;
             }
         }

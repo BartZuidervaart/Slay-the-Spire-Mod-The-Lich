@@ -2,7 +2,7 @@ package ultra.lich.minions;
 
 import basemod.animations.SpineAnimation;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import ultra.lich.player.LichClass;
+import ultra.lich.powers.SummonerPower;
 
 public class SpecterMinion extends AbstractLichMinion {
     private static String NAME = "Specter";
@@ -10,7 +10,7 @@ public class SpecterMinion extends AbstractLichMinion {
 
     int intendedMaxHealth;
 
-    public SpecterMinion(LichClass caster, int hp, int attack, int defense) {
+    public SpecterMinion(SummonerPower caster, int hp, int attack, int defense) {
         super(NAME, ID, hp+defense, new SpineAnimation("img/minions/Specter.atlas","img/minions/Specter.json",1f), "animtion0", caster,attack,defense);
         this.intendedMaxHealth = hp;
     }

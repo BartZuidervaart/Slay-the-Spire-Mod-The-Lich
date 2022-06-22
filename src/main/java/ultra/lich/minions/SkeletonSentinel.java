@@ -8,8 +8,8 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.FrailPower;
 import ultra.lich.minionactions.LichMinionMove;
 import ultra.lich.images.ImageLibrary;
-import ultra.lich.player.LichClass;
 import ultra.lich.powers.PutridPower;
+import ultra.lich.powers.SummonerPower;
 
 import java.util.ArrayList;
 
@@ -28,7 +28,7 @@ public class SkeletonSentinel extends AbstractControlableLichMinion{
         addToBot(new ApplyPowerAction(target, this, new FrailPower(target,this.getTotalAttack(),false)));
     };
 
-    public SkeletonSentinel(LichClass caster, int hp, int defense, int frail) {
+    public SkeletonSentinel(SummonerPower caster, int hp, int defense, int frail) {
         super(NAME, ID, hp, new SpineAnimation("img/minions/SkeletonSentinel.atlas","img/minions/SkeletonSentinel.json",1.2f), "animtion0", caster,frail,defense);
         addMoves();
     }

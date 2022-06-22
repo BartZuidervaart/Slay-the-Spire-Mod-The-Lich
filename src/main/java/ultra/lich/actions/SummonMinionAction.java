@@ -2,14 +2,14 @@ package ultra.lich.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import ultra.lich.minions.AbstractLichMinion;
-import ultra.lich.player.LichClass;
+import ultra.lich.powers.SummonerPower;
 
 public class SummonMinionAction extends AbstractGameAction {
 
-    LichClass caster;
+    SummonerPower caster;
     AbstractLichMinion minion;
 
-    public SummonMinionAction(LichClass caster, AbstractLichMinion minion) {
+    public SummonMinionAction(SummonerPower caster, AbstractLichMinion minion) {
         this.caster = caster;
         this.minion = minion;
     }

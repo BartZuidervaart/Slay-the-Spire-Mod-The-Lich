@@ -1,12 +1,11 @@
 package ultra.lich.cards;
 
 import basemod.abstracts.CustomCard;
-import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import ultra.lich.actions.SacrificeMinionAction;
 import ultra.lich.eNums.LichCardEnum;
-import ultra.lich.player.LichClass;
+import ultra.lich.powers.SummonerPower;
 
 import java.util.ArrayList;
 
@@ -37,41 +36,38 @@ public abstract class AbstractLichCard extends CustomCard {
     @Override
     public boolean canUse(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
         boolean canUse = super.canUse(abstractPlayer,abstractMonster);
-        if(!allowedToSacrifice(abstractPlayer)){
-            canUse = false;
+        if(abstractPlayer.hasPower(SummonerPower.POWER_ID)){
+            if(!allowedToSacrifice((SummonerPower)abstractPlayer.getPower(SummonerPower.POWER_ID))){
+                canUse = false;
+            }
         }
         return canUse;
     }
 
     protected void sacrifice(AbstractPlayer abstractPlayer, ArrayList<AbstractMonster> abstractMonsters, boolean pickLastMinions){
         if(this.sacrifice > 0){
-            if (abstractPlayer instanceof LichClass) {
-                LichClass caster = (LichClass) abstractPlayer;
+            if (abstractPlayer.hasPower(SummonerPower.POWER_ID)) {
+                SummonerPower caster = (SummonerPower) abstractPlayer.getPower(SummonerPower.POWER_ID);
                 if(abstractMonsters != null){
                     abstractMonsters.forEach(monster -> addToBot(new SacrificeMinionAction(caster, monster)));
                 } else if (pickLastMinions){
-                    int lastMonster = caster.getMinions().monsters.size()-1;
+                    int lastMonster = caster.minions.monsters.size()-1;
                     for(int i = lastMonster; i > lastMonster-this.sacrifice; i--){
-                        addToBot(new SacrificeMinionAction(caster,caster.getMinions().monsters.get(i)));
+                        addToBot(new SacrificeMinionAction(caster,caster.minions.monsters.get(i)));
                     }
                 } else {
                     for(int i = 0; i < this.sacrifice; i++){
-                        addToBot(new SacrificeMinionAction(caster,caster.getMinions().monsters.get(i)));
+                        addToBot(new SacrificeMinionAction(caster,caster.minions.monsters.get(i)));
                     }
                 }
             }
         }
     }
 
-    protected boolean allowedToSacrifice(AbstractPlayer abstractPlayer){
+    protected boolean allowedToSacrifice(SummonerPower caster){
         if(this.sacrifice > 0) {
-            if (abstractPlayer instanceof LichClass) {
-                LichClass caster = (LichClass) abstractPlayer;
-                if (caster.hasMinions() && caster.getAmountOfMinions() >= this.sacrifice) {
-                    return true;
-                } else {
-                    return false;
-                }
+            if (caster.hasMinions() && caster.getAmountOfMinions() >= this.sacrifice) {
+                return true;
             } else {
                 return false;
             }

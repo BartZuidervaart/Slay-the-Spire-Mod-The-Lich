@@ -9,8 +9,8 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import ultra.lich.minionactions.LichMinionMove;
 import ultra.lich.images.ImageLibrary;
-import ultra.lich.player.LichClass;
 import ultra.lich.powers.PutridPower;
+import ultra.lich.powers.SummonerPower;
 
 import java.util.ArrayList;
 
@@ -32,7 +32,7 @@ public class SkeletonPikeman extends AbstractControlableLichMinion{
         addToBot(new ApplyPowerAction(target, this, new VulnerablePower(target,this.getTotalDefense(),false)));
     };
 
-    public SkeletonPikeman(LichClass caster, int hp, int attack, int vulnerable) {
+    public SkeletonPikeman(SummonerPower caster, int hp, int attack, int vulnerable) {
         super(NAME, ID, hp, new SpineAnimation("img/minions/SkeletonPike.atlas","img/minions/SkeletonPike.json",1.2f), "animtion0", caster,attack,vulnerable);
 
         addMoves();

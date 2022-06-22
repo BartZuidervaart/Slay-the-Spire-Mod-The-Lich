@@ -7,7 +7,7 @@ import ultra.lich.actions.SummonMinionAction;
 import ultra.lich.eNums.LichCardEnum;
 import ultra.lich.images.ImageLibrary;
 import ultra.lich.minions.BoneWallMinion;
-import ultra.lich.player.LichClass;
+import ultra.lich.powers.SummonerPower;
 
 public class BonewallCard extends AbstractLichCard {
 
@@ -27,8 +27,8 @@ public class BonewallCard extends AbstractLichCard {
 
     public void use(AbstractPlayer p, AbstractMonster m) {
 
-        if (p instanceof LichClass) {
-            LichClass caster = (LichClass) p;
+        if (p.hasPower(SummonerPower.POWER_ID)) {
+            SummonerPower caster = (SummonerPower) p.getPower(SummonerPower.POWER_ID);
             BoneWallMinion minion = this.upgraded ? new BoneWallMinion(caster, 25, 5, 12,15,1) : new BoneWallMinion(caster, 20, 3, 8,10,1);
             addToBot(new SummonMinionAction(caster,minion));
         }

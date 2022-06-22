@@ -9,8 +9,7 @@ import ultra.lich.cards.status.FleshRot;
 import ultra.lich.eNums.LichCardEnum;
 import ultra.lich.images.ImageLibrary;
 import ultra.lich.minions.BloatedZombieMinion;
-import ultra.lich.minions.ZombieMinion;
-import ultra.lich.player.LichClass;
+import ultra.lich.powers.SummonerPower;
 
 public class BloatedZombieCard extends AbstractLichCard {
 
@@ -28,8 +27,8 @@ public class BloatedZombieCard extends AbstractLichCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (p instanceof LichClass) {
-            LichClass caster = (LichClass) p;
+        if (p.hasPower(SummonerPower.POWER_ID)) {
+            SummonerPower caster = (SummonerPower) p.getPower(SummonerPower.POWER_ID);
             BloatedZombieMinion minion = this.upgraded ? new BloatedZombieMinion(caster, 10, 0,0,10,3) : new BloatedZombieMinion(caster, 0, 5,0,5,5);
             addToBot(new SummonMinionAction(caster, minion));
         }

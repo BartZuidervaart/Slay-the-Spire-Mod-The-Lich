@@ -9,8 +9,8 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import ultra.lich.minionactions.LichMinionMove;
 import ultra.lich.images.ImageLibrary;
-import ultra.lich.player.LichClass;
 import ultra.lich.powers.PutridPower;
+import ultra.lich.powers.SummonerPower;
 
 import java.util.ArrayList;
 
@@ -31,7 +31,7 @@ public class SkeletonSoldier extends AbstractControlableLichMinion{
         addToBot(new GainBlockAction(this,this, this.getTotalDefense()));
     };
 
-    public SkeletonSoldier(LichClass caster, int hp, int attack, int defense) {
+    public SkeletonSoldier(SummonerPower caster, int hp, int attack, int defense) {
         super(NAME, ID, hp, new SpineAnimation("img/minions/Skeleton_sword_shield.atlas","img/minions/Skeleton_sword_shield.json",1.2f), "animtion0", caster,attack,defense);
         addMoves();
     }

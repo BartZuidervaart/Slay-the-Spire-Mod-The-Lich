@@ -9,13 +9,13 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.PoisonPower;
 import kobting.friendlyminions.monsters.AbstractFriendlyMonster;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import ultra.lich.player.LichClass;
 import ultra.lich.powers.*;
 import ultra.lich.relics.AbstractLichRelic;
 
@@ -26,20 +26,20 @@ public abstract class AbstractLichMinion extends AbstractFriendlyMonster {
 
     public static final Logger LOGGER = LogManager.getLogger(AbstractLichMinion.class.getName());
 
-    private LichClass caster;
+    private SummonerPower caster;
     private int baseAttack;
     private int baseDefense;
 
     public AbstractMonster attackTarget; //the minion will prefer to attack this target
 
-    public AbstractLichMinion(String name, String id, int maxHealth, SpineAnimation animation, String animationName, LichClass caster, int baseAttack, int baseDefense){
+    public AbstractLichMinion(String name, String id, int maxHealth, SpineAnimation animation, String animationName, SummonerPower caster, int baseAttack, int baseDefense){
         this(name, id, maxHealth, "img/minions/testminion.png", caster, baseAttack, baseDefense);
 
         this.loadAnimation(animation.atlasUrl,animation.skeletonUrl, animation.scale);
         this.state.setAnimation(0, animationName, true); //start animation
     }
 
-    public AbstractLichMinion(String name, String id, int maxHealth, String imgUrl, LichClass caster, int baseAttack, int baseDefense) {
+    public AbstractLichMinion(String name, String id, int maxHealth, String imgUrl, SummonerPower caster, int baseAttack, int baseDefense) {
         super(name, id, maxHealth, 0.0F, 0.0F, 150.0F, 130.0F, imgUrl, 0f, 0f);
         this.caster = caster;
         this.baseAttack = baseAttack;
@@ -47,15 +47,15 @@ public abstract class AbstractLichMinion extends AbstractFriendlyMonster {
         this.correctStartingPosition(caster);
     }
 
-    public AbstractLichMinion(String name, String id, int maxHealth, String imgUrl, LichClass caster, Texture[] attackIntents) {
+    public AbstractLichMinion(String name, String id, int maxHealth, String imgUrl, SummonerPower caster, Texture[] attackIntents) {
         super(name, id, maxHealth, 0.0F, 0.0F, 150.0F, 130.0F, imgUrl, 0f, 0f,attackIntents);
         this.caster = caster;
         this.correctStartingPosition(caster);
     }
 
-    private void correctStartingPosition(LichClass caster){
-        this.drawX = caster.drawX + caster.hb_w + 100;
-        this.drawY = caster.hb_y + caster.hb_h;
+    private void correctStartingPosition(SummonerPower caster){
+        this.drawX = caster.owner.drawX + caster.owner.hb_w + 100;
+        this.drawY = caster.owner.hb_y + caster.owner.hb_h;
     }
 
     @Override
@@ -67,18 +67,21 @@ public abstract class AbstractLichMinion extends AbstractFriendlyMonster {
                 ((AbstractLichPower)power).minionDies(this);
             }
         });
-        this.caster.getMinions().monsters.forEach(monster -> {
+        this.caster.minions.monsters.forEach(monster -> {
             monster.powers.forEach(power -> {
                 if(power instanceof AbstractLichPower){
                     ((AbstractLichPower)power).minionDies(this);
                 }
             });
         });
-        this.caster.relics.forEach(relic -> {
-            if(relic instanceof AbstractLichRelic){
-                ((AbstractLichRelic)relic).minionDies(this);
-            }
-        });
+        if(this.caster.owner instanceof AbstractPlayer){
+            AbstractPlayer player = (AbstractPlayer)this.caster.owner;
+            player.relics.forEach(relic -> {
+                if(relic instanceof AbstractLichRelic){
+                    ((AbstractLichRelic)relic).minionDies(this);
+                }
+            });
+        }
     }
 
     @Override
@@ -94,7 +97,7 @@ public abstract class AbstractLichMinion extends AbstractFriendlyMonster {
         sr.setPremultipliedAlpha(true);
     }
 
-    public LichClass getCaster(){
+    public SummonerPower getCaster(){
         return caster;
     }
 
@@ -116,7 +119,7 @@ public abstract class AbstractLichMinion extends AbstractFriendlyMonster {
     public void attack(AbstractMonster target, int damage){
         applyPowerAsPartOfAttack(target);
         DamageInfo info = new DamageInfo(this,damage,DamageInfo.DamageType.NORMAL);
-        info.applyPowers(this.getCaster(), target); // <--- This lets the casters powers effect minions attacks
+        info.applyPowers(this.caster.owner, target); // <--- This lets the casters powers effect minions attacks
         addToBot(new DamageAction(target, info));
     }
 
@@ -175,9 +178,9 @@ public abstract class AbstractLichMinion extends AbstractFriendlyMonster {
     }
 
     public void applyStartPowers(){
-        addToBot(new ApplyPowerAction(this, this, new MinionPower(this,caster),1));
-        addToBot(new ApplyPowerAction(this, this, new AttackPower(this, baseAttack, 0),1));
-        addToBot(new ApplyPowerAction(this, this, new DefensePower(this, baseDefense, 0),1));
+        addToBot(new ApplyPowerAction(this, this, new MinionPower(this,this.caster)));
+        addToBot(new ApplyPowerAction(this, this, new AttackPower(this, baseAttack, 0)));
+        addToBot(new ApplyPowerAction(this, this, new DefensePower(this, baseDefense, 0)));
     }
 
     public void setAlpha(float alpha){

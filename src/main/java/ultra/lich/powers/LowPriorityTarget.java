@@ -6,19 +6,18 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ultra.lich.images.ImageLibrary;
-import ultra.lich.player.LichClass;
 
 public class LowPriorityTarget extends AbstractLichPower {
 
     public String DESCRIPTION =  "When damage is redirected, this receives damage last.";
 
-    public LichClass summoner;
+    public SummonerPower summoner;
 
     public static final Logger LOGGER = LogManager.getLogger(MinionPower.class.getName());
 
     public static final String POWER_ID = "TheLich:LowPriorityPower";
 
-    public LowPriorityTarget(AbstractCreature owner, LichClass summoner){
+    public LowPriorityTarget(AbstractCreature owner, SummonerPower summoner){
         super();
         this.name = "Low Priority";
         this.ID = POWER_ID;

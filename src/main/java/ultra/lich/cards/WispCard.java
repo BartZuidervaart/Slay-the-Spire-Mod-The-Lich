@@ -10,7 +10,7 @@ import ultra.lich.eNums.LichCardEnum;
 import ultra.lich.minionactions.MinionTargeting;
 import ultra.lich.images.ImageLibrary;
 import ultra.lich.minions.OrbMinion;
-import ultra.lich.player.LichClass;
+import ultra.lich.powers.SummonerPower;
 
 public class WispCard extends AbstractLichCard {
 
@@ -34,8 +34,8 @@ public class WispCard extends AbstractLichCard {
     public void use(AbstractPlayer p, AbstractMonster abstractMonster) {
         AbstractMonster target = MinionTargeting.getTarget(this);
 
-        if(p instanceof LichClass){
-            LichClass caster = (LichClass)p;
+        if(p.hasPower(SummonerPower.POWER_ID)){
+            SummonerPower caster = (SummonerPower)p.getPower(SummonerPower.POWER_ID);
             addToBot(new SacrificeMinionAction(caster,target));
             addToBot(new SummonMinionAction(caster,new OrbMinion(caster,3,1,1,1,1)));
         }

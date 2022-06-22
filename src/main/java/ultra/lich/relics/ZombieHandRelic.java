@@ -1,12 +1,11 @@
 package ultra.lich.relics;
 
-import basemod.abstracts.CustomRelic;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import ultra.lich.images.ImageLibrary;
 import ultra.lich.minions.ZombieMinion;
-import ultra.lich.player.LichClass;
+import ultra.lich.powers.SummonerPower;
 
 public class ZombieHandRelic extends AbstractLichRelic {
 
@@ -30,9 +29,9 @@ public class ZombieHandRelic extends AbstractLichRelic {
     @Override
     public void atBattleStart(){
         super.atBattleStart();
-        if(AbstractDungeon.player instanceof LichClass){
-            LichClass summoner = (LichClass)AbstractDungeon.player;
-            summoner.addMinion(new ZombieMinion(summoner));
+        if(AbstractDungeon.player.hasPower(SummonerPower.POWER_ID)){
+            SummonerPower caster = (SummonerPower)AbstractDungeon.player.getPower(SummonerPower.POWER_ID);
+            caster.addMinion(new ZombieMinion(caster));
         }
     }
 }

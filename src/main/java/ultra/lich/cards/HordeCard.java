@@ -7,7 +7,7 @@ import ultra.lich.actions.SummonMinionAction;
 import ultra.lich.eNums.LichCardEnum;
 import ultra.lich.images.ImageLibrary;
 import ultra.lich.minions.ZombieMinion;
-import ultra.lich.player.LichClass;
+import ultra.lich.powers.SummonerPower;
 
 public class HordeCard extends AbstractLichCard {
 
@@ -24,8 +24,8 @@ public class HordeCard extends AbstractLichCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (p instanceof LichClass) {
-            LichClass caster = (LichClass) p;
+        if (p.hasPower(SummonerPower.POWER_ID)) {
+            SummonerPower caster = (SummonerPower) p.getPower(SummonerPower.POWER_ID);
             for(int i = 0; i < 4; i++){
                 ZombieMinion minion = this.upgraded ?
                         new ZombieMinion(caster, 10,3,0, 5) :

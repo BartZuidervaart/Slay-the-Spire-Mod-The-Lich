@@ -12,7 +12,7 @@ import ultra.lich.actions.SummonMinionAction;
 import ultra.lich.eNums.LichCardEnum;
 import ultra.lich.images.ImageLibrary;
 import ultra.lich.minions.OrbMinion;
-import ultra.lich.player.LichClass;
+import ultra.lich.powers.SummonerPower;
 
 public class SoulLeechCard extends AbstractLichCard {
     public static final String ID = "TheLich:SoulLeechCard";
@@ -47,8 +47,8 @@ public class SoulLeechCard extends AbstractLichCard {
     }
 
     private Runnable summonMinion = () -> {
-        if (AbstractDungeon.player instanceof LichClass) {
-            LichClass caster = (LichClass) AbstractDungeon.player;
+        if (AbstractDungeon.player.hasPower(SummonerPower.POWER_ID)) {
+            SummonerPower caster = (SummonerPower) AbstractDungeon.player.getPower(SummonerPower.POWER_ID);
             OrbMinion minion = this.upgraded ? new OrbMinion(caster, 6, 3, 0, 2, 1) : new OrbMinion(caster, 3, 3, 0, 1, 1);
             addToBot(new SummonMinionAction(caster,minion));
         }

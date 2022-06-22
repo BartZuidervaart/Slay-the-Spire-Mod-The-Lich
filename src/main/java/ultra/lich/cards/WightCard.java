@@ -9,7 +9,7 @@ import ultra.lich.eNums.LichCardEnum;
 import ultra.lich.minionactions.MinionTargeting;
 import ultra.lich.images.ImageLibrary;
 import ultra.lich.minions.WightMinion;
-import ultra.lich.player.LichClass;
+import ultra.lich.powers.SummonerPower;
 
 public class WightCard extends AbstractLichCard {
 
@@ -32,8 +32,8 @@ public class WightCard extends AbstractLichCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster abstractMonster) {
         AbstractMonster target = MinionTargeting.getTarget(this);
-        if (p instanceof LichClass) {
-            LichClass caster = (LichClass) p;
+        if (p.hasPower(SummonerPower.POWER_ID)) {
+            SummonerPower caster = (SummonerPower) p.getPower(SummonerPower.POWER_ID);
             addToBot(new SacrificeMinionAction(caster, target));
 
             WightMinion minion = new WightMinion(caster,10,5,0,1,3,0,5,5);

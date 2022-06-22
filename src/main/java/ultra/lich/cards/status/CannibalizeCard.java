@@ -8,8 +8,8 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import ultra.lich.actions.SacrificeMinionAction;
 import ultra.lich.minionactions.MinionTargeting;
 import ultra.lich.images.ImageLibrary;
-import ultra.lich.player.LichClass;
 import ultra.lich.powers.SoakPower;
+import ultra.lich.powers.SummonerPower;
 
 import java.util.ArrayList;
 
@@ -35,8 +35,8 @@ public class CannibalizeCard extends CustomCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster abstractMonster) {
         AbstractMonster target = MinionTargeting.getTarget(this);
-        if(p instanceof LichClass){
-            LichClass caster = (LichClass)p;
+        if(p.hasPower(SummonerPower.POWER_ID)){
+            SummonerPower caster = (SummonerPower)p.getPower(SummonerPower.POWER_ID);
 
             //get info before death
             int currentHealth = target.currentHealth;
@@ -47,10 +47,10 @@ public class CannibalizeCard extends CustomCard {
             addToBot(new SacrificeMinionAction(caster,target));
 
             //heal other minions
-            ArrayList<AbstractMonster> minions = caster.getMinions().monsters;
+            ArrayList<AbstractMonster> minions = caster.minions.monsters;
             if(minions.size() > 0){ //else this will fire an ArithmeticException for dividing by 0
                 int healAmount = this.upgraded ? (Math.round(total / minions.size())*2) : Math.round(total / minions.size());
-                minions.forEach(monster -> addToBot(new HealAction(monster,caster,healAmount)));
+                minions.forEach(monster -> addToBot(new HealAction(monster,caster.owner,healAmount)));
             }
         }
     }

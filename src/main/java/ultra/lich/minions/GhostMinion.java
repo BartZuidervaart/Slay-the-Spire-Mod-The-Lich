@@ -5,11 +5,7 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import ultra.lich.actions.SummonMinionAction;
-import ultra.lich.player.LichClass;
-import ultra.lich.powers.ExplosiveDeathPower;
-import ultra.lich.powers.OrbPower;
-import ultra.lich.powers.SoakPower;
-import ultra.lich.powers.SummonSicknessPower;
+import ultra.lich.powers.*;
 
 public class GhostMinion extends AbstractLichMinion {
     private static String NAME = "Ghost";
@@ -17,7 +13,7 @@ public class GhostMinion extends AbstractLichMinion {
 
     private int orbPower;
 
-    public GhostMinion(LichClass caster, int hp, int attack, int defense, int orbPower) {
+    public GhostMinion(SummonerPower caster, int hp, int attack, int defense, int orbPower) {
         super(NAME, ID, hp, new SpineAnimation("img/minions/Ghost.atlas","img/minions/Ghost.json",1f), "animtion0", caster,attack,defense);
         this.orbPower = orbPower;
     }

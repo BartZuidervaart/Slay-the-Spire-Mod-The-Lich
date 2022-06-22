@@ -23,6 +23,8 @@ public class ImageLibrary {
     public static final String DEFENSE_ICON = "img/powers/defense.png";
     public static final String EXPLOSION_ICON = "img/powers/explosion.png";
     public static final String EXPLOSION_ICON_32 = "img/powers/explosion_32.png";
+    public static final String SUMMONER_POWER_ICON = "img/powers/summoner.png";
+    public static final String SUMMONER_POWER_ICON_32 = "img/powers/summoner_32.png";
 
     //ACTION BUTTONS
     public static final String ATTACK_MINION_MOVE_ICON = "img/minions/action buttons/attack.png";

@@ -41,7 +41,7 @@ public class OrbPower extends AbstractLichPower {
     public void onDeath(){
         if(this.owner instanceof AbstractLichMinion){
             AbstractLichMinion minion = (AbstractLichMinion)this.owner;
-            this.addToBot(new ApplyPowerAction(minion.getCaster(), minion, new EnergizedPower(minion.getCaster(), this.amount), 1));
+            this.addToBot(new ApplyPowerAction(minion.getCaster().owner, minion, new EnergizedPower(minion.getCaster().owner, this.amount), 1));
         }
     }
 }

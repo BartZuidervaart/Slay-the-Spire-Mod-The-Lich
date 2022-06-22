@@ -9,8 +9,8 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import ultra.lich.actions.SummonMinionAction;
 import ultra.lich.minionactions.LichMinionMove;
 import ultra.lich.images.ImageLibrary;
-import ultra.lich.player.LichClass;
 import ultra.lich.powers.PutridPower;
+import ultra.lich.powers.SummonerPower;
 
 import java.util.ArrayList;
 
@@ -38,7 +38,7 @@ public class WightMinion extends AbstractControlableLichMinion{
         addToBot(new SummonMinionAction(this.getCaster(),new ZombieMinion(this.getCaster(), this.minionHealth, this.minionAttack,this.minionDefense,this.minionSoak)));
     };
 
-    public WightMinion(LichClass caster, int hp, int attack, int defense, int putrid, int minionAttack, int minionDefense, int minionHealth, int minionSoak) {
+    public WightMinion(SummonerPower caster, int hp, int attack, int defense, int putrid, int minionAttack, int minionDefense, int minionHealth, int minionSoak) {
         super(NAME, ID, hp, new SpineAnimation("img/minions/Skeleton_sword_shield.atlas","img/minions/Skeleton_sword_shield.json",1.2f), "animtion0", caster,attack,defense);
         addMoves();
         this.minionAttack = minionAttack;

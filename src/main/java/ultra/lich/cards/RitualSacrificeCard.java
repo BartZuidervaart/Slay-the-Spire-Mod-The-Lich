@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import ultra.lich.images.ImageLibrary;
 import ultra.lich.minions.AbstractLichMinion;
-import ultra.lich.player.LichClass;
+import ultra.lich.powers.SummonerPower;
 
 public class RitualSacrificeCard extends AbstractLichCard {
 
@@ -38,10 +38,10 @@ public class RitualSacrificeCard extends AbstractLichCard {
         }
         int damage = 0;
         int block = 0;
-        if(p instanceof LichClass){
-            LichClass caster = (LichClass)p;
-            int lastMonster = caster.getMinions().monsters.size()-1;
-            AbstractMonster monster = caster.getMinions().monsters.get(lastMonster);
+        if(p.hasPower(SummonerPower.POWER_ID)){
+            SummonerPower caster = (SummonerPower)p.getPower(SummonerPower.POWER_ID);
+            int lastMonster = caster.minions.monsters.size()-1;
+            AbstractMonster monster = caster.minions.monsters.get(lastMonster);
             if(monster instanceof AbstractLichMinion){
                 AbstractLichMinion minion = (AbstractLichMinion) monster;
                 damage = minion.getTotalAttack();

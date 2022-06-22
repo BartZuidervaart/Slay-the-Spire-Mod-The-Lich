@@ -10,8 +10,8 @@ import org.apache.logging.log4j.Logger;
 import ultra.lich.cards.status.FleshRot;
 import ultra.lich.minionactions.MinionTargeting;
 import ultra.lich.images.ImageLibrary;
-import ultra.lich.player.LichClass;
 import ultra.lich.powers.LowPriorityTarget;
+import ultra.lich.powers.SummonerPower;
 
 public class ShelteredCard extends AbstractLichCard {
 
@@ -38,9 +38,9 @@ public class ShelteredCard extends AbstractLichCard {
         if(!this.upgraded){
             this.addToBot(new MakeTempCardInHandAction(new FleshRot(),1));
         }
-        if (abstractPlayer instanceof LichClass) {
-            LichClass summoner = (LichClass) abstractPlayer;
-            addToBot(new ApplyPowerAction(target, summoner, new LowPriorityTarget(target, summoner), 1));
+        if (abstractPlayer.hasPower(SummonerPower.POWER_ID)) {
+            SummonerPower caster = (SummonerPower) abstractPlayer.getPower(SummonerPower.POWER_ID);
+            addToBot(new ApplyPowerAction(target, caster.owner, new LowPriorityTarget(target, caster), 1));
         }
     }
 }

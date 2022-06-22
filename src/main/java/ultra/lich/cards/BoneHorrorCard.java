@@ -7,7 +7,7 @@ import ultra.lich.actions.SummonMinionAction;
 import ultra.lich.eNums.LichCardEnum;
 import ultra.lich.images.ImageLibrary;
 import ultra.lich.minions.BoneHorrorMinion;
-import ultra.lich.player.LichClass;
+import ultra.lich.powers.SummonerPower;
 
 public class BoneHorrorCard extends AbstractLichCard {
 
@@ -31,8 +31,8 @@ public class BoneHorrorCard extends AbstractLichCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster abstractMonster) {
         super.use(p,abstractMonster);
-        if (p instanceof LichClass) {
-            LichClass caster = (LichClass) p;
+        if (p.hasPower(SummonerPower.POWER_ID)) {
+            SummonerPower caster = (SummonerPower) p.getPower(SummonerPower.POWER_ID);
             addToBot(new SummonMinionAction(caster, new BoneHorrorMinion(caster,40,20,20,3)));
         }
     }

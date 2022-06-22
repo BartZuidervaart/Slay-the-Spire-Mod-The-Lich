@@ -8,7 +8,7 @@ import ultra.lich.actions.SummonMinionAction;
 import ultra.lich.eNums.LichCardEnum;
 import ultra.lich.images.ImageLibrary;
 import ultra.lich.minions.ClawMinion;
-import ultra.lich.player.LichClass;
+import ultra.lich.powers.SummonerPower;
 
 public class ClawCard extends AbstractLichCard {
 
@@ -39,8 +39,8 @@ public class ClawCard extends AbstractLichCard {
         int totalDamage = baseDamage + (additionalDamage * timesUsed);
         int totalHealth = this.upgraded ? upgradedBaseHealth + (additionalDamage * timesUsed) : baseHealth + (additionalDamage * timesUsed);
 
-        if (p instanceof LichClass) {
-            LichClass caster = (LichClass) p;
+        if (p.hasPower(SummonerPower.POWER_ID)) {
+            SummonerPower caster = (SummonerPower) p.getPower(SummonerPower.POWER_ID);
             ClawMinion minion = this.upgraded ? new ClawMinion(caster, totalHealth, totalDamage, 0, 1) : new ClawMinion(caster, totalHealth, totalDamage, 0, 1);
             minion.attackTarget = abstractMonster;
             addToBot(new SummonMinionAction(caster, minion));

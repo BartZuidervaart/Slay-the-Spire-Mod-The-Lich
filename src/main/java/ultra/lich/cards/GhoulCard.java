@@ -10,7 +10,7 @@ import ultra.lich.actions.SummonMinionAction;
 import ultra.lich.eNums.LichCardEnum;
 import ultra.lich.images.ImageLibrary;
 import ultra.lich.minions.GhoulMinion;
-import ultra.lich.player.LichClass;
+import ultra.lich.powers.SummonerPower;
 
 public class GhoulCard extends AbstractLichCard {
     public static final String ID = "TheLich:GhoulCard";
@@ -42,8 +42,8 @@ public class GhoulCard extends AbstractLichCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(m, damage, DamageInfo.DamageType.NORMAL),AbstractGameAction.AttackEffect.SLASH_HEAVY));
 
-        if (p instanceof LichClass) {
-            LichClass caster = (LichClass) p;
+        if (p.hasPower(SummonerPower.POWER_ID)) {
+            SummonerPower caster = (SummonerPower) p.getPower(SummonerPower.POWER_ID);
             GhoulMinion minion = this.upgraded ? new GhoulMinion(caster,15,10,0, 3) : new GhoulMinion(caster,10,10,0, 3);
             addToBot(new SummonMinionAction(caster,minion));
         }

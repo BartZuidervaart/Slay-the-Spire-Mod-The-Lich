@@ -6,8 +6,8 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import kobting.friendlyminions.monsters.AbstractFriendlyMonster;
 import ultra.lich.images.ImageLibrary;
-import ultra.lich.player.LichClass;
 import ultra.lich.powers.HighPriorityTarget;
+import ultra.lich.powers.SummonerPower;
 
 public class CommandingHandRelic extends AbstractLichRelic {
 
@@ -33,9 +33,9 @@ public class CommandingHandRelic extends AbstractLichRelic {
     public void addedMinion(AbstractFriendlyMonster minion){
         String name = minion.name;
         if(name.contains("Zombie") || name.contains("zombie")){
-            if(AbstractDungeon.player instanceof LichClass){
-                LichClass summoner = (LichClass)AbstractDungeon.player;
-                addToBot(new ApplyPowerAction(minion, summoner, new HighPriorityTarget(minion, summoner)));
+            if(AbstractDungeon.player.hasPower(SummonerPower.POWER_ID)){
+                SummonerPower caster = (SummonerPower)AbstractDungeon.player.getPower(SummonerPower.POWER_ID);
+                addToBot(new ApplyPowerAction(minion, caster.owner, new HighPriorityTarget(minion, caster)));
             }
         }
     };

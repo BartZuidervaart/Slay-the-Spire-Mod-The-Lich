@@ -11,8 +11,8 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import ultra.lich.cards.status.CannibalizeCard;
 import ultra.lich.minionactions.LichMinionMove;
 import ultra.lich.images.ImageLibrary;
-import ultra.lich.player.LichClass;
 import ultra.lich.powers.PutridPower;
+import ultra.lich.powers.SummonerPower;
 
 import java.util.ArrayList;
 
@@ -35,7 +35,7 @@ public class BoneHorrorMinion extends AbstractControlableLichMinion{
         addToBot(new GainBlockAction(this,this, this.getTotalDefense()));
     };
 
-    public BoneHorrorMinion(LichClass caster, int hp, int attack, int defense, int putrid) {
+    public BoneHorrorMinion(SummonerPower caster, int hp, int attack, int defense, int putrid) {
         super(NAME, ID, hp, new SpineAnimation("img/minions/Skeleton_sword_shield.atlas","img/minions/Skeleton_sword_shield.json",1.2f), "animtion0", caster,attack,defense);
         addMoves();
         this.putrid = putrid;

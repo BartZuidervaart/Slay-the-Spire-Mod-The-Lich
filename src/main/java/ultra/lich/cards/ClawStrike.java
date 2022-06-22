@@ -5,13 +5,12 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import ultra.lich.actions.SummonMinionAction;
 import ultra.lich.eNums.LichCardEnum;
 import ultra.lich.images.ImageLibrary;
 import ultra.lich.minions.ClawMinion;
-import ultra.lich.player.LichClass;
+import ultra.lich.powers.SummonerPower;
 
 public class ClawStrike extends AbstractLichCard {
     public static final String ID = "TheLich:Claw_Strike";
@@ -45,8 +44,8 @@ public class ClawStrike extends AbstractLichCard {
                     new DamageInfo(p, this.damage, this.damageTypeForTurn),
                     AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
 
-            if (p instanceof LichClass) {
-                LichClass caster = (LichClass) p;
+            if (p.hasPower(SummonerPower.POWER_ID)) {
+                SummonerPower caster = (SummonerPower) p.getPower(SummonerPower.POWER_ID);
                 addToBot(new SummonMinionAction(caster, new ClawMinion(caster)));
             }
     }

@@ -5,8 +5,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import ultra.lich.images.ImageLibrary;
 import ultra.lich.minions.AbstractLichMinion;
-import ultra.lich.player.LichClass;
 import ultra.lich.powers.DefensePower;
+import ultra.lich.powers.SummonerPower;
 
 public class Resilience extends AbstractLichCard {
 
@@ -27,9 +27,9 @@ public class Resilience extends AbstractLichCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster abstractMonster) {
-        if(p instanceof LichClass){
-            LichClass caster = (LichClass) p;
-            caster.getMinions().monsters.forEach(
+        if(p.hasPower(SummonerPower.POWER_ID)){
+            SummonerPower caster = (SummonerPower) p.getPower(SummonerPower.POWER_ID);
+            caster.minions.monsters.forEach(
                     monster -> {
                         if(monster instanceof AbstractLichMinion){
                             if(this.upgraded){

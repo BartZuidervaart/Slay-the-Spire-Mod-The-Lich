@@ -7,12 +7,11 @@ import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import ultra.lich.cards.status.FleshRot;
 import ultra.lich.images.ImageLibrary;
-import ultra.lich.player.LichClass;
 import ultra.lich.powers.DeadMarkedPower;
+import ultra.lich.powers.SummonerPower;
 
 public class MarkDeadCard extends AbstractLichCard {
 
@@ -53,9 +52,9 @@ public class MarkDeadCard extends AbstractLichCard {
 
         addToBot(new DamageAction(abstractMonster, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
 
-        if(p instanceof LichClass){
-            LichClass caster = (LichClass)p;
-            addToBot(new ApplyPowerAction(abstractMonster, p, new DeadMarkedPower(abstractMonster, caster),1));
+        if(p.hasPower(SummonerPower.POWER_ID)){
+            SummonerPower caster = (SummonerPower)p.getPower(SummonerPower.POWER_ID);
+            addToBot(new ApplyPowerAction(abstractMonster, p, new DeadMarkedPower(abstractMonster, caster)));
         }
     }
 }

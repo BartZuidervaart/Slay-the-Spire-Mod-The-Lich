@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.PoisonPower;
 import ultra.lich.images.ImageLibrary;
-import ultra.lich.player.LichClass;
+import ultra.lich.powers.SummonerPower;
 
 public class PlagueCard extends AbstractLichCard {
 
@@ -39,9 +39,9 @@ public class PlagueCard extends AbstractLichCard {
             PoisonPower poison = (PoisonPower)p.getPower("Poison");
             int poisonAmount = poison.amount;
             this.addToBot(new RemoveSpecificPowerAction(p, p, "Poison"));
-            if(p instanceof LichClass){
-                LichClass summoner = (LichClass)p;
-                summoner.getMinions().monsters.forEach(monster -> this.addToBot(new ApplyPowerAction(monster,summoner, new PoisonPower(monster,summoner,poisonAmount))));
+            if(p.hasPower(SummonerPower.POWER_ID)){
+                SummonerPower caster = (SummonerPower)p.getPower(SummonerPower.POWER_ID);
+                caster.minions.monsters.forEach(monster -> this.addToBot(new ApplyPowerAction(monster,caster.owner, new PoisonPower(monster,caster.owner,poisonAmount))));
             }
         }
     }

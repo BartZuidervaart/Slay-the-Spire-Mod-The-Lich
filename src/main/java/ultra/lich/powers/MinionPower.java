@@ -5,19 +5,18 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import ultra.lich.player.LichClass;
 
 public class MinionPower extends AbstractLichPower {
 
     public String DESCRIPTION =  "Damage is redirected towards a random #yMinion. Excess damage carries on.";
 
-    public LichClass summoner;
+    public SummonerPower summoner;
 
     public static final Logger LOGGER = LogManager.getLogger(MinionPower.class.getName());
 
     public static final String POWER_ID = "TheLich:MinionPower";
 
-    public MinionPower(AbstractCreature owner, LichClass summoner){
+    public MinionPower(AbstractCreature owner, SummonerPower summoner){
         super();
         this.name = "Minion";
         this.ID = POWER_ID;
@@ -56,7 +55,7 @@ public class MinionPower extends AbstractLichPower {
                 if(target != null){
                     target.damage(new DamageInfo(info.owner,(int)tremble, DamageInfo.DamageType.NORMAL));
                 } else {
-                    summoner.damage(new DamageInfo(summoner,(int)tremble,DamageInfo.DamageType.NORMAL));
+                    summoner.owner.damage(new DamageInfo(summoner.owner,(int)tremble,DamageInfo.DamageType.NORMAL));
                 }
             }
         }

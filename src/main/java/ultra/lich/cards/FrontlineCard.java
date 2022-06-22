@@ -8,8 +8,8 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import ultra.lich.cards.status.FleshRot;
 import ultra.lich.minionactions.MinionTargeting;
 import ultra.lich.images.ImageLibrary;
-import ultra.lich.player.LichClass;
 import ultra.lich.powers.HighPriorityTarget;
+import ultra.lich.powers.SummonerPower;
 
 public class FrontlineCard extends AbstractLichCard {
 
@@ -36,9 +36,9 @@ public class FrontlineCard extends AbstractLichCard {
             this.addToBot(new MakeTempCardInHandAction(new FleshRot(),1));
         }
 
-        if (abstractPlayer instanceof LichClass) {
-            LichClass caster = (LichClass) abstractPlayer;
-            addToBot(new ApplyPowerAction(target, caster, new HighPriorityTarget(target, caster), 1));
+        if (abstractPlayer.hasPower(SummonerPower.POWER_ID)) {
+            SummonerPower caster = (SummonerPower) abstractPlayer.getPower(SummonerPower.POWER_ID);
+            addToBot(new ApplyPowerAction(target, caster.owner, new HighPriorityTarget(target, caster), 1));
         }
     }
 }

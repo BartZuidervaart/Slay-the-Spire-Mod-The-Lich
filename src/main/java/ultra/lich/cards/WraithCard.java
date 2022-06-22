@@ -7,7 +7,7 @@ import ultra.lich.actions.SummonMinionAction;
 import ultra.lich.eNums.LichCardEnum;
 import ultra.lich.images.ImageLibrary;
 import ultra.lich.minions.WraithMinion;
-import ultra.lich.player.LichClass;
+import ultra.lich.powers.SummonerPower;
 
 public class WraithCard extends AbstractLichCard {
 
@@ -27,8 +27,8 @@ public class WraithCard extends AbstractLichCard {
 
     public void use(AbstractPlayer p, AbstractMonster m) {
 
-        if (p instanceof LichClass) {
-            LichClass caster = (LichClass) p;
+        if (p.hasPower(SummonerPower.POWER_ID)) {
+            SummonerPower caster = (SummonerPower) p.getPower(SummonerPower.POWER_ID);
             WraithMinion minion = this.upgraded ? new WraithMinion(caster, 25, 4, 2) : new WraithMinion(caster, 20, 2, 1);
             addToBot(new SummonMinionAction(caster, minion));
         }

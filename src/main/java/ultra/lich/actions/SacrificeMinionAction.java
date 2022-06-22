@@ -2,13 +2,13 @@ package ultra.lich.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import ultra.lich.player.LichClass;
+import ultra.lich.powers.SummonerPower;
 
 public class SacrificeMinionAction extends AbstractGameAction {
-    LichClass caster;
+    SummonerPower caster;
     AbstractMonster minion;
 
-    public SacrificeMinionAction(LichClass caster, AbstractMonster minion) {
+    public SacrificeMinionAction(SummonerPower caster, AbstractMonster minion) {
         this.caster = caster;
         this.minion = minion;
     }
