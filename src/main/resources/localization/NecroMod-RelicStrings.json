@@ -1,9 +1,58 @@
 {
-  "Vampire_Amulet": {
-    "NAME": "Vampire Amulet",
-    "FLAVOR": "A mysterious amulet that seems to draw in life force.",
+  "TheLich:Soul_Jar_Relic": {
+    "NAME": "Soul Jar",
+    "FLAVOR": "A jar that seems to contain the life essence of someone or something.",
     "DESCRIPTIONS": [
-      "On (non minion) Kill : Heal 2 HP."
+      "Whenever you would die, heal to full health instead.(use once)"
+    ]
+  },
+  "TheLich:Zombie_hand": {
+    "NAME": "Zombie hand",
+    "FLAVOR": "A rotting hand. It is still moving. Longing to be reunited with its body again.",
+    "DESCRIPTIONS": [
+      "At the start of a battle. Summon a zombie."
+    ]
+  },
+  "TheLich:Ceremonial_dagger": {
+    "NAME": "Ceremonial dagger",
+    "FLAVOR": "A dagger. Painted with ritualistic symbols.",
+    "DESCRIPTIONS": [
+      "After every 3 sacrifices. Gain 5 block."
+    ]
+  },
+  "TheLich:False_idol": {
+    "NAME": "False idol",
+    "FLAVOR": "A mysterious statue. You get the urge to worship it.",
+    "DESCRIPTIONS": [
+      "Gain [E] at the start of your turn. When you sacrifice a minion draw one fleshrot."
+    ]
+  },
+  "TheLich:StaffOfContaminationRelic": {
+    "NAME": "Staff of contamination",
+    "FLAVOR": "A creepy looking staff. It smells of illness",
+    "DESCRIPTIONS": [
+      "When you gain poison from fleshrot. Your minions gain 1 poison as well. Poisoned minion attacks apply poison to their target."
+    ]
+  },
+  "TheLich:CommandingHandRelic": {
+    "NAME": "Commanding hand",
+    "FLAVOR": "The hand of a leader.",
+    "DESCRIPTIONS": [
+      "When you summon a zombie, it gains high priority."
+    ]
+  },
+  "TheLich:StrongJawRelic": {
+    "NAME": "Strong jaw",
+    "FLAVOR": "Made to crunch.",
+    "DESCRIPTIONS": [
+      "Adds a cannibalize card at the start of every turn."
+    ]
+  },
+  "TheLich:SummoningFocusRelic": {
+    "NAME": "Summoning Focus",
+    "FLAVOR": "An arcade crystal.",
+    "DESCRIPTIONS": [
+      "When a summoned minion starts with summoning sickness, it starts with poison instead. Poisoned minions apply poison during their attacks."
     ]
   }
 }

@@ -1,0 +1,104 @@
+
+energyindicator.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+glow
+  rotate: false
+  xy: 1, 1
+  size: 654, 650
+  orig: 654, 650
+  offset: 0, 0
+  index: -1
+thumb
+  rotate: false
+  xy: 1002, 101
+  size: 16, 24
+  orig: 16, 24
+  offset: 0, 0
+  index: -1
+palm
+  rotate: false
+  xy: 772, 85
+  size: 65, 35
+  orig: 65, 35
+  offset: 0, 0
+  index: -1
+orb-1
+  rotate: false
+  xy: 855, 63
+  size: 43, 40
+  orig: 43, 40
+  offset: 0, 0
+  index: -1
+orb-2
+  rotate: false
+  xy: 973, 1
+  size: 41, 42
+  orig: 41, 42
+  offset: 0, 0
+  index: -1
+orb-3
+  rotate: false
+  xy: 772, 1
+  size: 81, 82
+  orig: 81, 82
+  offset: 0, 0
+  index: -1
+orb-4
+  rotate: false
+  xy: 855, 1
+  size: 58, 60
+  orig: 58, 60
+  offset: 0, 0
+  index: -1
+orb-5
+  rotate: false
+  xy: 915, 1
+  size: 56, 57
+  orig: 56, 57
+  offset: 0, 0
+  index: -1
+orb
+  rotate: false
+  xy: 657, 1
+  size: 113, 117
+  orig: 113, 117
+  offset: 0, 0
+  index: -1
+index
+  rotate: false
+  xy: 982, 75
+  size: 34, 24
+  orig: 34, 24
+  offset: 0, 0
+  index: -1
+middle
+  rotate: false
+  xy: 982, 45
+  size: 32, 28
+  orig: 32, 28
+  offset: 0, 0
+  index: -1
+ringfinger
+  rotate: false
+  xy: 982, 101
+  size: 18, 34
+  orig: 18, 34
+  offset: 0, 0
+  index: -1
+pink
+  rotate: false
+  xy: 900, 63
+  size: 13, 28
+  orig: 13, 28
+  offset: 0, 0
+  index: -1
+fist
+  rotate: false
+  xy: 915, 60
+  size: 65, 46
+  orig: 65, 46
+  offset: 0, 0
+  index: -1

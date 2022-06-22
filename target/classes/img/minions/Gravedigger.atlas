@@ -1,0 +1,76 @@
+
+Gravedigger.png
+size: 512,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+backmist
+  rotate: false
+  xy: 1, 202
+  size: 437, 164
+  orig: 437, 164
+  offset: 0, 0
+  index: -1
+body
+  rotate: false
+  xy: 1, 368
+  size: 131, 195
+  orig: 131, 195
+  offset: 0, 0
+  index: -1
+throw-sand
+  rotate: false
+  xy: 440, 367
+  size: 66, 55
+  orig: 66, 55
+  offset: 0, 0
+  index: -1
+shovel
+  rotate: false
+  xy: 257, 368
+  size: 117, 82
+  orig: 117, 82
+  offset: 0, 0
+  index: -1
+arm-right
+  rotate: false
+  xy: 440, 202
+  size: 53, 87
+  orig: 53, 87
+  offset: 0, 0
+  index: -1
+arm-left
+  rotate: false
+  xy: 440, 291
+  size: 60, 74
+  orig: 60, 74
+  offset: 0, 0
+  index: -1
+shoulders
+  rotate: false
+  xy: 134, 368
+  size: 121, 115
+  orig: 121, 115
+  offset: 0, 0
+  index: -1
+head
+  rotate: false
+  xy: 1, 565
+  size: 141, 151
+  orig: 141, 151
+  offset: 0, 0
+  index: -1
+ground
+  rotate: false
+  xy: 134, 485
+  size: 234, 58
+  orig: 234, 58
+  offset: 0, 0
+  index: -1
+frontmist
+  rotate: false
+  xy: 1, 1
+  size: 499, 199
+  orig: 500, 199
+  offset: 0, 0
+  index: -1

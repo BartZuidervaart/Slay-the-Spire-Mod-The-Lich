@@ -1,0 +1,111 @@
+
+SkeletonSentinel.png
+size: 256,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+upper-arm-right
+  rotate: false
+  xy: 56, 207
+  size: 42, 47
+  orig: 42, 47
+  offset: 0, 0
+  index: -1
+body
+  rotate: false
+  xy: 1, 147
+  size: 53, 83
+  orig: 53, 83
+  offset: 0, 0
+  index: -1
+bottom-arm-right
+  rotate: false
+  xy: 116, 1
+  size: 38, 36
+  orig: 38, 36
+  offset: 0, 0
+  index: -1
+handholdingbottom-right
+  rotate: false
+  xy: 1, 232
+  size: 21, 20
+  orig: 21, 20
+  offset: 0, 0
+  index: -1
+handholdingtop-right
+  rotate: false
+  xy: 116, 121
+  size: 19, 17
+  orig: 19, 17
+  offset: 0, 0
+  index: -1
+left-foot
+  rotate: false
+  xy: 156, 54
+  size: 19, 13
+  orig: 19, 13
+  offset: 0, 0
+  index: -1
+right-foot
+  rotate: false
+  xy: 116, 106
+  size: 30, 13
+  orig: 30, 13
+  offset: 0, 0
+  index: -1
+bone
+  rotate: false
+  xy: 156, 1
+  size: 10, 32
+  orig: 10, 32
+  offset: 0, 0
+  index: -1
+handholdingtop-left
+  rotate: false
+  xy: 156, 35
+  size: 19, 17
+  orig: 19, 17
+  offset: 0, 0
+  index: -1
+handholdingbottom-left
+  rotate: false
+  xy: 24, 232
+  size: 21, 20
+  orig: 21, 20
+  offset: 0, 0
+  index: -1
+bottom-arm-left
+  rotate: false
+  xy: 116, 39
+  size: 38, 36
+  orig: 38, 36
+  offset: 0, 0
+  index: -1
+upper-arm-left
+  rotate: false
+  xy: 100, 207
+  size: 42, 47
+  orig: 42, 47
+  offset: 0, 0
+  index: -1
+jaw
+  rotate: false
+  xy: 116, 77
+  size: 48, 27
+  orig: 48, 27
+  offset: 0, 0
+  index: -1
+skull
+  rotate: false
+  xy: 56, 147
+  size: 67, 58
+  orig: 67, 58
+  offset: 0, 0
+  index: -1
+tower-shield
+  rotate: false
+  xy: 1, 1
+  size: 113, 144
+  orig: 113, 144
+  offset: 0, 0
+  index: -1

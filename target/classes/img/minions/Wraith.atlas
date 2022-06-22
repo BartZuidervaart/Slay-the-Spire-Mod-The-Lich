@@ -1,0 +1,76 @@
+
+Wraith.png
+size: 512,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+smoke-2
+  rotate: false
+  xy: 1, 548
+  size: 443, 157
+  orig: 443, 157
+  offset: 0, 0
+  index: -1
+backglow
+  rotate: false
+  xy: 1, 1
+  size: 300, 350
+  orig: 300, 350
+  offset: 0, 0
+  index: -1
+body
+  rotate: false
+  xy: 303, 1
+  size: 201, 329
+  orig: 201, 329
+  offset: 0, 0
+  index: -1
+left-arm
+  rotate: false
+  xy: 1, 847
+  size: 100, 155
+  orig: 100, 155
+  offset: 0, 0
+  index: -1
+right-arm
+  rotate: false
+  xy: 422, 332
+  size: 79, 150
+  orig: 79, 150
+  offset: 0, 0
+  index: -1
+shoulders
+  rotate: false
+  xy: 1, 707
+  size: 184, 138
+  orig: 184, 138
+  offset: 0, 0
+  index: -1
+head-shape
+  rotate: false
+  xy: 103, 847
+  size: 99, 86
+  orig: 99, 86
+  offset: 0, 0
+  index: -1
+face
+  rotate: false
+  xy: 446, 554
+  size: 31, 31
+  orig: 31, 31
+  offset: 0, 0
+  index: -1
+crown
+  rotate: false
+  xy: 446, 484
+  size: 48, 68
+  orig: 48, 68
+  offset: 0, 0
+  index: -1
+smoke
+  rotate: false
+  xy: 1, 353
+  size: 419, 193
+  orig: 419, 193
+  offset: 0, 0
+  index: -1

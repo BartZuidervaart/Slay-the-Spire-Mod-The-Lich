@@ -1,45 +1,40 @@
 package ultra.lich.minions;
 
 import basemod.animations.SpineAnimation;
-import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.core.AbstractCreature;
+
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import kobting.friendlyminions.characters.AbstractPlayerWithMinions;
+import ultra.lich.player.LichClass;
+import ultra.lich.powers.ExplosiveDeathPower;
 import ultra.lich.powers.SoakPower;
 import ultra.lich.powers.SummonSicknessPower;
 
 public class FlameSkull extends AbstractLichMinion{
 
-    private static String NAME = "Flame Skull Minion";
-    private static String ID = "FlameSkull";
-    private AbstractMonster target;
+    private static String NAME = "Flame Skull";
+    private static String ID = "TheLich:FlameSkull";
 
-    public FlameSkull(AbstractPlayerWithMinions caster) {
-        super(NAME, ID, 10, new SpineAnimation("img/minions/flameskull.atlas","img/minions/flameskull.json",1.2f), "animtion0", caster);
-        //addMoves();
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new SummonSicknessPower(this, 1),1)); //slowly dies
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new SoakPower(this, 5),1));
+    private int soak;
+    private int explosive;
+    private int summonSickness;
 
+    public FlameSkull(LichClass caster){
+        this(caster,3,3,1,3,-1,1);
+    }
+
+    public FlameSkull(LichClass caster, int hp, int attack, int defense, int soak, int explosive, int summonSickness) {
+        super(NAME, ID, hp, new SpineAnimation("img/minions/flameskull.atlas","img/minions/flameskull.json",1.2f), "animtion0", caster,attack,defense);
+        this.soak = soak;
+        this.explosive = explosive;
+        this.summonSickness = summonSickness;
     }
 
     @Override
-    public void applyEndOfTurnTriggers() {
-        //attack
-        target = AbstractDungeon.getRandomMonster();
-        DamageInfo info = new DamageInfo(this,1,DamageInfo.DamageType.NORMAL);
-        info.applyPowers(this, target); // <--- This lets powers effect minions attacks
-        AbstractDungeon.actionManager.addToBottom(new DamageAction(target, info));
+    public void applyStartPowers(){
+        super.applyStartPowers();
 
-        //defend caster
-        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this,this, 1));
-
-        this.intent = AbstractMonster.Intent.ATTACK_DEFEND;
-
-        super.applyEndOfTurnTriggers();
+        addToBot(new ApplyPowerAction(this, this, new SummonSicknessPower(this, summonSickness),1)); //slowly dies
+        addToBot(new ApplyPowerAction(this, this, new SoakPower(this, soak)));
+        addToBot(new ApplyPowerAction(this, this, new ExplosiveDeathPower(this,explosive)));
     }
 }

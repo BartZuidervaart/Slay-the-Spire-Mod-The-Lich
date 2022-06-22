@@ -1,0 +1,118 @@
+
+Skeleton_sword_shield.png
+size: 256,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+handholdingbottom-right
+  rotate: false
+  xy: 108, 98
+  size: 21, 20
+  orig: 21, 20
+  offset: 0, 0
+  index: -1
+sword
+  rotate: false
+  xy: 122, 61
+  size: 71, 35
+  orig: 71, 35
+  offset: 0, 0
+  index: -1
+handholdingtop-right
+  rotate: false
+  xy: 163, 98
+  size: 19, 17
+  orig: 19, 17
+  offset: 0, 0
+  index: -1
+bottom-arm-right
+  rotate: false
+  xy: 45, 86
+  size: 38, 36
+  orig: 38, 36
+  offset: 0, 0
+  index: -1
+upper-arm-right
+  rotate: false
+  xy: 1, 79
+  size: 42, 47
+  orig: 42, 47
+  offset: 0, 0
+  index: -1
+body
+  rotate: false
+  xy: 67, 1
+  size: 53, 83
+  orig: 53, 83
+  offset: 0, 0
+  index: -1
+bone
+  rotate: false
+  xy: 245, 1
+  size: 10, 32
+  orig: 10, 32
+  offset: 0, 0
+  index: -1
+right-foot
+  rotate: false
+  xy: 131, 98
+  size: 30, 13
+  orig: 30, 13
+  offset: 0, 0
+  index: -1
+left-foot
+  rotate: false
+  xy: 131, 113
+  size: 19, 13
+  orig: 19, 13
+  offset: 0, 0
+  index: -1
+handholdingbottom-left
+  rotate: false
+  xy: 85, 86
+  size: 21, 20
+  orig: 21, 20
+  offset: 0, 0
+  index: -1
+handholdingtop-left
+  rotate: false
+  xy: 85, 108
+  size: 19, 17
+  orig: 19, 17
+  offset: 0, 0
+  index: -1
+bottom-arm-left
+  rotate: false
+  xy: 195, 50
+  size: 38, 36
+  orig: 38, 36
+  offset: 0, 0
+  index: -1
+upper-arm-left
+  rotate: false
+  xy: 191, 1
+  size: 42, 47
+  orig: 42, 47
+  offset: 0, 0
+  index: -1
+shield
+  rotate: false
+  xy: 1, 1
+  size: 64, 76
+  orig: 64, 76
+  offset: 0, 0
+  index: -1
+jaw
+  rotate: false
+  xy: 195, 88
+  size: 48, 27
+  orig: 48, 27
+  offset: 0, 0
+  index: -1
+skull
+  rotate: false
+  xy: 122, 1
+  size: 67, 58
+  orig: 67, 58
+  offset: 0, 0
+  index: -1

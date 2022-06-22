@@ -1,0 +1,41 @@
+
+Specter.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+background-glow
+  rotate: false
+  xy: 1, 1
+  size: 215, 321
+  orig: 215, 321
+  offset: 0, 0
+  index: -1
+body
+  rotate: false
+  xy: 218, 1
+  size: 130, 217
+  orig: 130, 217
+  offset: 0, 0
+  index: -1
+back-arm
+  rotate: false
+  xy: 350, 186
+  size: 93, 85
+  orig: 93, 85
+  offset: 0, 0
+  index: -1
+head
+  rotate: false
+  xy: 350, 1
+  size: 90, 101
+  orig: 90, 101
+  offset: 0, 0
+  index: -1
+front-arm
+  rotate: false
+  xy: 350, 104
+  size: 101, 80
+  orig: 101, 80
+  offset: 0, 0
+  index: -1

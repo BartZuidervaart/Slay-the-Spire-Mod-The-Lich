@@ -1,0 +1,125 @@
+
+BoneWall.png
+size: 512,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+back-mist
+  rotate: false
+  xy: 1, 312
+  size: 254, 101
+  orig: 254, 101
+  offset: 0, 0
+  index: -1
+back-bone-7
+  rotate: false
+  xy: 343, 392
+  size: 66, 111
+  orig: 66, 111
+  offset: 0, 0
+  index: -1
+back-bone-6
+  rotate: false
+  xy: 411, 553
+  size: 55, 121
+  orig: 55, 121
+  offset: 0, 0
+  index: -1
+back-bone-5
+  rotate: false
+  xy: 1, 415
+  size: 51, 123
+  orig: 51, 123
+  offset: 0, 0
+  index: -1
+back-bone-4
+  rotate: false
+  xy: 468, 607
+  size: 39, 128
+  orig: 39, 128
+  offset: 0, 0
+  index: -1
+back-bone-3
+  rotate: false
+  xy: 54, 415
+  size: 31, 130
+  orig: 31, 130
+  offset: 0, 0
+  index: -1
+back-bone-2
+  rotate: false
+  xy: 411, 417
+  size: 51, 134
+  orig: 51, 134
+  offset: 0, 0
+  index: -1
+back-bone-1
+  rotate: false
+  xy: 365, 1
+  size: 79, 145
+  orig: 79, 145
+  offset: 0, 0
+  index: -1
+middle-mist
+  rotate: false
+  xy: 1, 170
+  size: 288, 140
+  orig: 288, 140
+  offset: 0, 0
+  index: -1
+front-bone-7
+  rotate: false
+  xy: 414, 193
+  size: 87, 90
+  orig: 87, 90
+  offset: 0, 0
+  index: -1
+front-bone-6
+  rotate: false
+  xy: 257, 312
+  size: 84, 178
+  orig: 84, 178
+  offset: 0, 0
+  index: -1
+front-bone-5
+  rotate: false
+  xy: 291, 1
+  size: 72, 195
+  orig: 72, 195
+  offset: 0, 0
+  index: -1
+front-bone-4
+  rotate: false
+  xy: 446, 1
+  size: 51, 190
+  orig: 51, 190
+  offset: 0, 0
+  index: -1
+front-bone-3
+  rotate: false
+  xy: 468, 417
+  size: 31, 188
+  orig: 31, 188
+  offset: 0, 0
+  index: -1
+front-bone-2
+  rotate: false
+  xy: 343, 198
+  size: 69, 192
+  orig: 69, 192
+  offset: 0, 0
+  index: -1
+front-bone-1
+  rotate: false
+  xy: 446, 285
+  size: 57, 130
+  orig: 57, 130
+  offset: 0, 0
+  index: -1
+front-mist
+  rotate: false
+  xy: 1, 1
+  size: 266, 167
+  orig: 266, 167
+  offset: 0, 0
+  index: -1

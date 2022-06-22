@@ -1,14 +1,30 @@
 {
-	"Defend_W": {
-		"NAME" : "Defend",
-		"DESCRIPTION": "Gain !B! Block"
+	"Zombie_card": {
+		"NAME" : "Zombie",
+		"DESCRIPTION": "Summons a zombie with stats 0/0/5 that can soak 5 additional damage. It intents to do nothing on its turn."
 	},
-	"Strike_W": {
+	"Claw_Strike": {
 		"NAME": "Strike",
-		"DESCRIPTION": "Deal !D! damage."
+		"DESCRIPTION": "Deal !D! damage. This summons a claw with stats 4/0/3 that has summoning sickness. Its intent will be to attack on every turn."
 	},
-	"Bone_Armory": {
-		"NAME" : "Bone Armory",
-		"DESCRIPTION" : "At the start of your turn : Gain 1 Bones."
+	"Resilience": {
+		"NAME" : "Resilience",
+		"DESCRIPTION" : "All current minions gain 1 Armor to their stats."
+	},
+	"AggressiveCard": {
+		"NAME" : "Aggressive",
+		"DESCRIPTION" : "All current minions gain 1 Attack to their stats."
+	},
+	"Frontline_card": {
+		"NAME": "Frontline",
+		"DESCRIPTION": "Makes a minion high priority."
+	},
+	"Sheltered_card" : {
+		"NAME": "Sheltered",
+		"DESCRIPTION": "Makes a minion low priority."
+	},
+	"Wraith_card" : {
+		"NAME": "Wraith",
+		"DESCRIPTION": "Summons a wraith with stats 5/0/20 with low priority. When it attacks it applies 2 weak and 1 vulnerable."
 	}
 }	

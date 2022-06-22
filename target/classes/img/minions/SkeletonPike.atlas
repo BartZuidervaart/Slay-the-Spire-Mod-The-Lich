@@ -1,0 +1,97 @@
+
+SkeletonPike.png
+size: 128,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+handholdingbottom-right
+  rotate: false
+  xy: 95, 446
+  size: 21, 20
+  orig: 21, 20
+  offset: 0, 0
+  index: -1
+bottom-arm-right
+  rotate: false
+  xy: 45, 408
+  size: 38, 36
+  orig: 38, 36
+  offset: 0, 0
+  index: -1
+upper-arm-right
+  rotate: false
+  xy: 1, 408
+  size: 42, 47
+  orig: 42, 47
+  offset: 0, 0
+  index: -1
+body
+  rotate: false
+  xy: 1, 263
+  size: 53, 83
+  orig: 53, 83
+  offset: 0, 0
+  index: -1
+bone
+  rotate: false
+  xy: 45, 475
+  size: 10, 32
+  orig: 10, 32
+  offset: 0, 0
+  index: -1
+left-foot
+  rotate: false
+  xy: 57, 494
+  size: 19, 13
+  orig: 19, 13
+  offset: 0, 0
+  index: -1
+right-foot
+  rotate: false
+  xy: 95, 468
+  size: 30, 13
+  orig: 30, 13
+  offset: 0, 0
+  index: -1
+handholdingtop-right
+  rotate: false
+  xy: 57, 475
+  size: 19, 17
+  orig: 19, 17
+  offset: 0, 0
+  index: -1
+spear
+  rotate: false
+  xy: 1, 1
+  size: 27, 260
+  orig: 27, 260
+  offset: 0, 0
+  index: -1
+bottom-arm-left
+  rotate: false
+  xy: 85, 408
+  size: 38, 36
+  orig: 38, 36
+  offset: 0, 0
+  index: -1
+upper-arm-left
+  rotate: false
+  xy: 1, 457
+  size: 42, 47
+  orig: 42, 47
+  offset: 0, 0
+  index: -1
+jaw
+  rotate: false
+  xy: 45, 446
+  size: 48, 27
+  orig: 48, 27
+  offset: 0, 0
+  index: -1
+skull
+  rotate: false
+  xy: 1, 348
+  size: 67, 58
+  orig: 67, 58
+  offset: 0, 0
+  index: -1
