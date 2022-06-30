@@ -21,7 +21,7 @@ public class ClawStrike extends AbstractLichCard {
     private static int DAMAGE = 4;
     private static int UPGRADE_DAMAGE = 3;
 
-    public ClawStrike()  {
+    public ClawStrike() {
         super(ID, NAME, ImageLibrary.CLAW_STRIKE, COST, DESCRIPTION, DESCRIPTION, AbstractCard.CardType.ATTACK, AbstractCard.CardRarity.BASIC,
                 AbstractCard.CardTarget.ENEMY);
         tags.add(LichCardEnum.SUMMON);
@@ -31,8 +31,8 @@ public class ClawStrike extends AbstractLichCard {
     }
 
     @Override
-    public void upgrade(){
-        if(!this.upgraded){
+    public void upgrade() {
+        if (!this.upgraded) {
             this.upgradeDamage(UPGRADE_DAMAGE);
         }
         super.upgrade();
@@ -40,14 +40,11 @@ public class ClawStrike extends AbstractLichCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-            addToBot(new DamageAction(m,
-                    new DamageInfo(p, this.damage, this.damageTypeForTurn),
-                    AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+        addToBot(new DamageAction(m,
+                new DamageInfo(p, this.damage, this.damageTypeForTurn),
+                AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
 
-            if (p.hasPower(SummonerPower.POWER_ID)) {
-                SummonerPower caster = (SummonerPower) p.getPower(SummonerPower.POWER_ID);
-                addToBot(new SummonMinionAction(caster, new ClawMinion(caster)));
-            }
+        addToBot(new SummonMinionAction(p, new ClawMinion(p)));
     }
 
     public AbstractCard makeCopy() {

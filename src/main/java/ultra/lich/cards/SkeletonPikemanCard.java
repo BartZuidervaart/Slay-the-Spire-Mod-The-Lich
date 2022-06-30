@@ -14,9 +14,9 @@ import ultra.lich.powers.SummonerPower;
 public class SkeletonPikemanCard extends AbstractLichCard {
 
     public static final String ID = "TheLich:SkeletonPikemanCard";
-    public static final	String NAME = "Skeleton Pikeman";
-    public static final	String DESCRIPTION = "Tribute 1. Summons a skeleton pikeman with stats 7/3/10. Applies vulnerable instead of defend. Controllable. Putrid.";
-    public static final String UPGRADE_DESCRIPTION = "Tribute 1. Summons a skeleton pikeman with stats 10/5/15. Applies vulnerable instead of defend. Controllable. Putrid." ;
+    public static final String NAME = "Skeleton Pikeman";
+    public static final String DESCRIPTION = "Tribute 1. Summons a skeleton pikeman with stats 7/3/10. Applies vulnerable instead of defend. Controllable. Putrid.";
+    public static final String UPGRADE_DESCRIPTION = "Tribute 1. Summons a skeleton pikeman with stats 10/5/15. Applies vulnerable instead of defend. Controllable. Putrid.";
     private static final int COST = 1;
 
     public SkeletonPikemanCard() {
@@ -35,9 +35,9 @@ public class SkeletonPikemanCard extends AbstractLichCard {
 
         if (p.hasPower(SummonerPower.POWER_ID)) {
             SummonerPower caster = (SummonerPower) p.getPower(SummonerPower.POWER_ID);
-            SkeletonPikeman minion = this.upgraded ? new SkeletonPikeman(caster,15,10,5): new SkeletonPikeman(caster,10,7,3);
-            addToBot(new SacrificeMinionAction(caster,target));
-            addToBot(new SummonMinionAction(caster,minion));
+            addToBot(new SacrificeMinionAction(caster, target));
         }
+        SkeletonPikeman minion = this.upgraded ? new SkeletonPikeman(p, 15, 10, 5) : new SkeletonPikeman(p, 10, 7, 3);
+        addToBot(new SummonMinionAction(p, minion));
     }
 }

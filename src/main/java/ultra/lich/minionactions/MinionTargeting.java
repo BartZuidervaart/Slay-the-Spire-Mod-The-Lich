@@ -6,7 +6,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import kobting.friendlyminions.characters.AbstractPlayerWithMinions;
+import ultra.lich.powers.SummonerPower;
 
 public class MinionTargeting extends TargetingHandler<AbstractMonster> {
 
@@ -22,10 +22,10 @@ public class MinionTargeting extends TargetingHandler<AbstractMonster> {
     @Override
     public void updateHovered() {
         hovered = null;
-        if(AbstractDungeon.player instanceof AbstractPlayerWithMinions){
-            AbstractPlayerWithMinions summoner = (AbstractPlayerWithMinions)AbstractDungeon.player;
+        if(AbstractDungeon.player.hasPower(SummonerPower.POWER_ID)){
+            SummonerPower summoner = (SummonerPower)AbstractDungeon.player.getPower(SummonerPower.POWER_ID);
             if(summoner.hasMinions()){
-                summoner.getMinions().monsters.forEach(monster -> {
+                summoner.minions.monsters.forEach(monster -> {
                     if(monster.hb.hovered){
                         this.hovered = monster;
                     }

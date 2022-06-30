@@ -12,8 +12,8 @@ public class EmergencyReservesCard extends AbstractLichCard {
 
     public static final String ID = "TheLich:EmergencyReservesCard";
     public static final	String NAME = "Emergency Reserves";
-    public static final	String DESCRIPTION = "Adds 5 soak to a Minion.";
-    public static final String UPGRADE_DESCRIPTION = "Adds 10 soak to a Minion." ;
+    public static final	String DESCRIPTION = "Adds 8 soak to a Minion.";
+    public static final String UPGRADE_DESCRIPTION = "Adds 12 soak to a Minion." ;
     private static final int COST = 0;
 
     public EmergencyReservesCard() {
@@ -28,9 +28,9 @@ public class EmergencyReservesCard extends AbstractLichCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster abstractMonster) {
         AbstractMonster target = MinionTargeting.getTarget(this);
-        int soakAmount = 5;
+        int soakAmount = 8;
         if(upgraded){
-            soakAmount = 10;
+            soakAmount = 12;
         }
 
         this.addToBot(new ApplyPowerAction(target,p, new SoakPower(target, soakAmount)));

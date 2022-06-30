@@ -3,6 +3,7 @@ package ultra.lich.relics;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import ultra.lich.actions.SummonMinionAction;
 import ultra.lich.images.ImageLibrary;
 import ultra.lich.minions.ZombieMinion;
 import ultra.lich.powers.SummonerPower;
@@ -29,9 +30,6 @@ public class ZombieHandRelic extends AbstractLichRelic {
     @Override
     public void atBattleStart(){
         super.atBattleStart();
-        if(AbstractDungeon.player.hasPower(SummonerPower.POWER_ID)){
-            SummonerPower caster = (SummonerPower)AbstractDungeon.player.getPower(SummonerPower.POWER_ID);
-            caster.addMinion(new ZombieMinion(caster));
-        }
+        addToBot(new SummonMinionAction(AbstractDungeon.player,new ZombieMinion(AbstractDungeon.player)));
     }
 }

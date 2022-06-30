@@ -25,11 +25,8 @@ public class ZombieCard extends AbstractLichCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (p.hasPower(SummonerPower.POWER_ID)) {
-            SummonerPower caster = (SummonerPower) p.getPower(SummonerPower.POWER_ID);
-            ZombieMinion minion = this.upgraded ? new ZombieMinion(caster, 10, 5) : new ZombieMinion(caster, 5, 5);
-            addToBot(new SummonMinionAction(caster, minion));
-        }
+        ZombieMinion minion = this.upgraded ? new ZombieMinion(p, 10, 5) : new ZombieMinion(p, 5, 5);
+        addToBot(new SummonMinionAction(p, minion));
     }
 
     public AbstractCard makeCopy() {

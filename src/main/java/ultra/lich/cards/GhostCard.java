@@ -25,12 +25,8 @@ public class GhostCard extends AbstractLichCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-
-        if (p.hasPower(SummonerPower.POWER_ID)) {
-            SummonerPower caster = (SummonerPower) p.getPower(SummonerPower.POWER_ID);
-            GhostMinion minion = this.upgraded ? new GhostMinion(caster, 15, 1, 5,2) : new GhostMinion(caster, 10, 1, 3,1);
-            addToBot(new SummonMinionAction(caster,minion));
-        }
+        GhostMinion minion = this.upgraded ? new GhostMinion(p, 15, 1, 5,2) : new GhostMinion(p, 10, 1, 3,1);
+        addToBot(new SummonMinionAction(p,minion));
     }
 
     public AbstractCard makeCopy() {

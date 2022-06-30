@@ -17,8 +17,8 @@ public class CannibalizeCard extends CustomCard {
 
     public static final String ID = "TheLich:CannibalizeCard";
     public static final	String NAME = "Cannibalize";
-    public static final	String DESCRIPTION = "Sacrifice a Minion. All other minions heal equal to its remaining health including its soak divided by the amount of minions. Ethereal. Exhaust.";
-    public static final	String UPGRADED_DESCRIPTION = "Sacrifice a Minion. All other minions heal equal to twice its remaining health including its soak divided by the amount of minions. Ethereal. Exhaust.";
+    public static final	String DESCRIPTION = "Sacrifice a Minion. All other minions heal 4 health. Ethereal. Exhaust.";
+    public static final	String UPGRADED_DESCRIPTION = "Sacrifice a Minion. All other minions heal 6 health. Ethereal. Exhaust.";
     private static final int COST = 0;
 
     public CannibalizeCard() {
@@ -38,18 +38,13 @@ public class CannibalizeCard extends CustomCard {
         if(p.hasPower(SummonerPower.POWER_ID)){
             SummonerPower caster = (SummonerPower)p.getPower(SummonerPower.POWER_ID);
 
-            //get info before death
-            int currentHealth = target.currentHealth;
-            int soak = target.hasPower(SoakPower.POWER_ID) ? target.getPower(SoakPower.POWER_ID).amount : 0;
-            int total = currentHealth + soak;
-
             //kill
             addToBot(new SacrificeMinionAction(caster,target));
 
             //heal other minions
             ArrayList<AbstractMonster> minions = caster.minions.monsters;
             if(minions.size() > 0){ //else this will fire an ArithmeticException for dividing by 0
-                int healAmount = this.upgraded ? (Math.round(total / minions.size())*2) : Math.round(total / minions.size());
+                int healAmount = this.upgraded ? 6 : 4;
                 minions.forEach(monster -> addToBot(new HealAction(monster,caster.owner,healAmount)));
             }
         }

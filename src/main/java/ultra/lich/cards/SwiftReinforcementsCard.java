@@ -12,9 +12,9 @@ import ultra.lich.powers.SummonerPower;
 public class SwiftReinforcementsCard extends AbstractLichCard {
 
     public static final String ID = "TheLich:Swift Reinforcements";
-    public static final	String NAME = "Swift Reinforcements";
-    public static final	String DESCRIPTION = "Summons 2 flame skulls. Stats 3/1/3. Summoning sickness 1. Soak 5. Explodes.";
-    public static final String UPGRADE_DESCRIPTION = "Summons 3 flame skulls. Stats 3/1/3. Summoning sickness 1. Soak 5. Explodes." ;
+    public static final String NAME = "Swift Reinforcements";
+    public static final String DESCRIPTION = "Summons 2 flame skulls. Stats 3/1/3. Summoning sickness 1. Soak 5. Explodes.";
+    public static final String UPGRADE_DESCRIPTION = "Summons 3 flame skulls. Stats 3/1/3. Summoning sickness 1. Soak 5. Explodes.";
     private static final int COST = 1;
 
     public SwiftReinforcementsCard() {
@@ -29,12 +29,9 @@ public class SwiftReinforcementsCard extends AbstractLichCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster abstractMonster) {
-        if (p.hasPower(SummonerPower.POWER_ID)) {
-            SummonerPower caster = (SummonerPower) p.getPower(SummonerPower.POWER_ID);
-            for (int i = 0; i < (this.upgraded ? 3 : 2); i++) {
-                FlameSkull minion = new FlameSkull(caster, 3, 3, 1, 5, -1, 1);
-                addToBot(new SummonMinionAction(caster, minion));
-            }
+        for (int i = 0; i < (this.upgraded ? 3 : 2); i++) {
+            FlameSkull minion = new FlameSkull(p, 3, 3, 1, 5, -1, 1);
+            addToBot(new SummonMinionAction(p, minion));
         }
     }
 }

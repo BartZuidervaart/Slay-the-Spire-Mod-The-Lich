@@ -11,13 +11,16 @@ public class ProtectionSpellCard extends AbstractLichCard {
 
     public static final String ID = "TheLich:ProtectionSpellCard";
     public static final	String NAME = "Protection spell";
-    public static final	String DESCRIPTION = "Adds 8 block to a Minion.";
-    public static final String UPGRADE_DESCRIPTION = "Adds 12 block to a Minion." ;
+    public static final	String DESCRIPTION = "Adds !B! block to a Minion.";
     private static final int COST = 1;
 
+    private static int BLOCK = 8;
+    private static int UPGRADE_BLOCK= 4;
+
     public ProtectionSpellCard() {
-        super(ID, NAME, ImageLibrary.PROTECTION_SPELL, COST, DESCRIPTION, UPGRADE_DESCRIPTION, AbstractCard.CardType.SKILL,
+        super(ID, NAME, ImageLibrary.PROTECTION_SPELL, COST, DESCRIPTION, DESCRIPTION, AbstractCard.CardType.SKILL,
                 AbstractCard.CardRarity.COMMON, MinionTargeting.MINION);
+        this.baseBlock = BLOCK;
     }
 
     public AbstractCard makeCopy() {
@@ -27,11 +30,14 @@ public class ProtectionSpellCard extends AbstractLichCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster abstractMonster) {
         AbstractMonster target = MinionTargeting.getTarget(this);
-        int blockAmount = 8;
-        if(upgraded){
-            blockAmount = 12;
-        }
+        this.addToBot(new GainBlockAction(target,this.block));
+    }
 
-        this.addToBot(new GainBlockAction(target,blockAmount));
+    @Override
+    public void upgrade() {
+        if (!this.upgraded) {
+            this.upgradeBlock(UPGRADE_BLOCK);
+        }
+        super.upgrade();
     }
 }

@@ -51,10 +51,7 @@ public class PutridStrike extends AbstractLichCard {
                 AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         addToBot(new ApplyPowerAction(m, p, new PoisonPower(m, p, poison)));
 
-        if (p.hasPower(SummonerPower.POWER_ID)) {
-            SummonerPower caster = (SummonerPower) p.getPower(SummonerPower.POWER_ID);
-            addToBot(new SummonMinionAction(caster,new ClawMinion(caster, 2,5,0,1)));
-        }
+        addToBot(new SummonMinionAction(p,new ClawMinion(p, 2,5,0,1)));
         this.addToBot(new MakeTempCardInHandAction(new FleshRot(),1));
     }
 

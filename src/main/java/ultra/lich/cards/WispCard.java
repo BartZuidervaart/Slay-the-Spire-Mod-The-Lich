@@ -37,8 +37,9 @@ public class WispCard extends AbstractLichCard {
         if(p.hasPower(SummonerPower.POWER_ID)){
             SummonerPower caster = (SummonerPower)p.getPower(SummonerPower.POWER_ID);
             addToBot(new SacrificeMinionAction(caster,target));
-            addToBot(new SummonMinionAction(caster,new OrbMinion(caster,3,1,1,1,1)));
         }
+
+        addToBot(new SummonMinionAction(p,new OrbMinion(p,3,1,1,1,1)));
 
         if(upgraded){
             this.addToBot(new GainEnergyAction(1));

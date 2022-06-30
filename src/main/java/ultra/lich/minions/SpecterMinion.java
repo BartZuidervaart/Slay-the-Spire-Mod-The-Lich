@@ -1,6 +1,8 @@
 package ultra.lich.minions;
 
 import basemod.animations.SpineAnimation;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import ultra.lich.powers.SummonerPower;
 
@@ -10,9 +12,10 @@ public class SpecterMinion extends AbstractLichMinion {
 
     int intendedMaxHealth;
 
-    public SpecterMinion(SummonerPower caster, int hp, int attack, int defense) {
-        super(NAME, ID, hp+defense, new SpineAnimation("img/minions/Specter.atlas","img/minions/Specter.json",1f), "animtion0", caster,attack,defense);
+    public SpecterMinion(AbstractCreature summoner, int hp, int attack, int defense) {
+        super(NAME, ID, hp+defense, new SpineAnimation("img/minions/Specter.atlas","img/minions/Specter.json",1f), "animtion0", summoner,attack,defense);
         this.intendedMaxHealth = hp;
+        baseAttackEffect = AbstractGameAction.AttackEffect.LIGHTNING;
     }
 
     @Override

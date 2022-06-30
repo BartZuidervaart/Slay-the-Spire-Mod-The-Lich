@@ -47,11 +47,8 @@ public class SoulLeechCard extends AbstractLichCard {
     }
 
     private Runnable summonMinion = () -> {
-        if (AbstractDungeon.player.hasPower(SummonerPower.POWER_ID)) {
-            SummonerPower caster = (SummonerPower) AbstractDungeon.player.getPower(SummonerPower.POWER_ID);
-            OrbMinion minion = this.upgraded ? new OrbMinion(caster, 6, 3, 0, 2, 1) : new OrbMinion(caster, 3, 3, 0, 1, 1);
-            addToBot(new SummonMinionAction(caster,minion));
-        }
+        OrbMinion minion = this.upgraded ? new OrbMinion(AbstractDungeon.player, 6, 3, 0, 2, 1) : new OrbMinion(AbstractDungeon.player, 3, 3, 0, 1, 1);
+        addToBot(new SummonMinionAction(AbstractDungeon.player,minion));
     };
 
     public AbstractCard makeCopy() {

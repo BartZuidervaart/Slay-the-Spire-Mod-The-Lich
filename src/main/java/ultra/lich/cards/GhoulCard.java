@@ -21,7 +21,7 @@ public class GhoulCard extends AbstractLichCard {
     private static int DAMAGE = 10;
     private static int UPGRADE_DAMAGE = 5;
 
-    public GhoulCard()  {
+    public GhoulCard() {
         super(ID, NAME, ImageLibrary.GHOUL, COST, DESCRIPTION, DESCRIPTION, AbstractCard.CardType.ATTACK, AbstractCard.CardRarity.UNCOMMON,
                 AbstractCard.CardTarget.ENEMY);
 
@@ -31,8 +31,8 @@ public class GhoulCard extends AbstractLichCard {
     }
 
     @Override
-    public void upgrade(){
-        if(!this.upgraded){
+    public void upgrade() {
+        if (!this.upgraded) {
             this.upgradeDamage(UPGRADE_DAMAGE);
         }
         super.upgrade();
@@ -40,13 +40,9 @@ public class GhoulCard extends AbstractLichCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAction(m, new DamageInfo(m, damage, DamageInfo.DamageType.NORMAL),AbstractGameAction.AttackEffect.SLASH_HEAVY));
-
-        if (p.hasPower(SummonerPower.POWER_ID)) {
-            SummonerPower caster = (SummonerPower) p.getPower(SummonerPower.POWER_ID);
-            GhoulMinion minion = this.upgraded ? new GhoulMinion(caster,15,10,0, 3) : new GhoulMinion(caster,10,10,0, 3);
-            addToBot(new SummonMinionAction(caster,minion));
-        }
+        addToBot(new DamageAction(m, new DamageInfo(m, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HEAVY));
+        GhoulMinion minion = this.upgraded ? new GhoulMinion(p, 15, 10, 0, 3) : new GhoulMinion(p, 10, 10, 0, 3);
+        addToBot(new SummonMinionAction(p, minion));
     }
 
     public AbstractCard makeCopy() {

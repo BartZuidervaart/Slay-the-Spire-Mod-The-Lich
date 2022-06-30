@@ -14,9 +14,9 @@ import ultra.lich.powers.SummonerPower;
 public class SkeletonSoldierCard extends AbstractLichCard {
 
     public static final String ID = "TheLich:SkeletonSwordShieldCard";
-    public static final	String NAME = "Skeleton Soldier";
-    public static final	String DESCRIPTION = "Tribute 1. Summons a skeleton soldier with stats 5/5/10. Controllable. Putrid.";
-    public static final String UPGRADE_DESCRIPTION = "Tribute 1. Summons a skeleton soldier with stats 7/7/15. Controllable. Putrid." ;
+    public static final String NAME = "Skeleton Soldier";
+    public static final String DESCRIPTION = "Tribute 1. Summons a skeleton soldier with stats 5/5/10. Controllable. Putrid.";
+    public static final String UPGRADE_DESCRIPTION = "Tribute 1. Summons a skeleton soldier with stats 7/7/15. Controllable. Putrid.";
     private static final int COST = 1;
 
     public SkeletonSoldierCard() {
@@ -34,9 +34,10 @@ public class SkeletonSoldierCard extends AbstractLichCard {
         AbstractMonster target = MinionTargeting.getTarget(this);
         if (p.hasPower(SummonerPower.POWER_ID)) {
             SummonerPower caster = (SummonerPower) p.getPower(SummonerPower.POWER_ID);
-            SkeletonSoldier minion = this.upgraded ? new SkeletonSoldier(caster,15,7,7) : new SkeletonSoldier(caster,10,5,5);
-            addToBot(new SacrificeMinionAction(caster,target));
-            addToBot(new SummonMinionAction(caster,minion));
+            addToBot(new SacrificeMinionAction(caster, target));
         }
+
+        SkeletonSoldier minion = this.upgraded ? new SkeletonSoldier(p, 15, 7, 7) : new SkeletonSoldier(p, 10, 5, 5);
+        addToBot(new SummonMinionAction(p, minion));
     }
 }

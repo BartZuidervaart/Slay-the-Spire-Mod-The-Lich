@@ -26,12 +26,8 @@ public class WraithCard extends AbstractLichCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-
-        if (p.hasPower(SummonerPower.POWER_ID)) {
-            SummonerPower caster = (SummonerPower) p.getPower(SummonerPower.POWER_ID);
-            WraithMinion minion = this.upgraded ? new WraithMinion(caster, 25, 4, 2) : new WraithMinion(caster, 20, 2, 1);
-            addToBot(new SummonMinionAction(caster, minion));
-        }
+            WraithMinion minion = this.upgraded ? new WraithMinion(p, 25, 4, 2) : new WraithMinion(p, 20, 2, 1);
+            addToBot(new SummonMinionAction(p, minion));
     }
 
     public AbstractCard makeCopy() {

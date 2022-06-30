@@ -34,10 +34,10 @@ public class SkeletonSentinelCard extends AbstractLichCard {
         AbstractMonster target = MinionTargeting.getTarget(this);
         if (p.hasPower(SummonerPower.POWER_ID)) {
             SummonerPower caster = (SummonerPower) p.getPower(SummonerPower.POWER_ID);
-            SkeletonSentinel minion = this.upgraded ? new SkeletonSentinel(caster,15,10,5): new SkeletonSentinel(caster,10,7,3);
-            addToBot(new SacrificeMinionAction(caster,target));
-            addToBot(new SummonMinionAction(caster,minion));
+            addToBot(new SacrificeMinionAction(caster, target));
         }
+            SkeletonSentinel minion = this.upgraded ? new SkeletonSentinel(p,15,10,5): new SkeletonSentinel(p,10,7,3);
+            addToBot(new SummonMinionAction(p,minion));
     }
 }
 

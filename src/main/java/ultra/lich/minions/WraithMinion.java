@@ -1,7 +1,9 @@
 package ultra.lich.minions;
 
 import basemod.animations.SpineAnimation;
+import com.megacrit.cardcrawl.actions.animations.AnimateSlowAttackAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
@@ -13,12 +15,13 @@ public class WraithMinion extends AbstractLichMinion {
     private static String NAME = "Wraith";
     private static String ID = "TheLich:WraithMinion";
 
-    public WraithMinion(SummonerPower caster, int hp, int attack, int defense) {
-        super(NAME, ID, hp, new SpineAnimation("img/minions/Wraith.atlas","img/minions/Wraith.json",1f), "animtion0", caster,attack,defense);
+    public WraithMinion(AbstractCreature summoner, int hp, int attack, int defense) {
+        super(NAME, ID, hp, new SpineAnimation("img/minions/Wraith.atlas","img/minions/Wraith.json",1f), "animtion0", summoner,attack,defense);
     }
 
     @Override
     public void attack(AbstractMonster target, int damage){
+        addToBot(new AnimateSlowAttackAction(this));
         this.applyPowerAsPartOfAttack(target);
         if(target.hasPower(WeakPower.POWER_ID)){
             AbstractPower weakPower = target.getPower(WeakPower.POWER_ID);

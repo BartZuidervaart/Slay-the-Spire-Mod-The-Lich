@@ -1,9 +1,12 @@
 package ultra.lich.powers;
 
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
@@ -17,6 +20,7 @@ import ultra.lich.relics.AbstractLichRelic;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class SummonerPower extends AbstractLichPower {
@@ -28,6 +32,7 @@ public class SummonerPower extends AbstractLichPower {
     public static final String POWER_ID = "TheLich:SummonerPower";
 
     public MonsterGroup minions;
+    private AbstractFriendlyMonster[] p_minions;
 
     public SummonerPower(AbstractCreature owner, int amount){
         super();
@@ -39,6 +44,7 @@ public class SummonerPower extends AbstractLichPower {
         this.type = PowerType.BUFF;
         this.region48 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage(ImageLibrary.SUMMONER_POWER_ICON_32),0,0,32,32);
         this.region128 = new TextureAtlas.AtlasRegion(ImageMaster.loadImage(ImageLibrary.SUMMONER_POWER_ICON),0,0,128,128);
+        this.clearMinions();
     }
 
     @Override
@@ -62,25 +68,56 @@ public class SummonerPower extends AbstractLichPower {
     @Override
     public void atStartOfTurnPostDraw() {
         super.atStartOfTurnPostDraw();
+        this.minions.monsters.forEach((minion) -> {
+            minion.applyStartOfTurnPostDrawPowers();
+        });
         this.flushDeadMinions();
     }
 
     @Override
     public void atStartOfTurn() {
         super.atStartOfTurn();
+        this.minions.monsters.forEach((minion) -> {
+            minion.applyStartOfTurnPowers();
+        });
+        this.minions.monsters.forEach((minion) -> {
+            minion.loseBlock();
+        });
         this.flushDeadMinions();
     }
 
     @Override
     public void duringTurn(){
         super.duringTurn();
+        this.minions.monsters.forEach((minion) -> {
+            minion.applyTurnPowers();
+        });
         this.flushDeadMinions();
+    }
+
+    @Override
+    public void atEndOfTurnPreEndTurnCards(boolean isPlayer){
+        this.minions.monsters.forEach((minion) -> {
+            minion.applyEndOfTurnTriggers();
+        });
+        this.minions.monsters.forEach((minion) -> {
+            minion.powers.forEach((power) -> {
+                power.atEndOfRound();
+            });
+        });
     }
 
     @Override
     public void update(int slot) {
         super.update(slot);
         this.flushDeadMinions();
+
+        if (AbstractDungeon.getCurrRoom() != null) {
+            switch(AbstractDungeon.getCurrRoom().phase) {
+                case COMBAT:
+                    this.minions.update();
+            }
+        }
 
         this.minions.monsters.forEach(monster -> {
             if (this.minions.hoveredMonster != monster && this.minions.hoveredMonster != null) {
@@ -97,6 +134,10 @@ public class SummonerPower extends AbstractLichPower {
                     ((AbstractLichMinion) monster).setAlpha(1f);
                 }
             }
+        });
+
+        this.minions.monsters.forEach((minion) -> {
+            minion.updatePowers();
         });
     }
 
@@ -134,6 +175,7 @@ public class SummonerPower extends AbstractLichPower {
             });
         }
         abstractMonster.die();
+        abstractMonster.isDead = true;
     }
 
     @Override
@@ -150,8 +192,7 @@ public class SummonerPower extends AbstractLichPower {
     }
 
     public void addMinion(AbstractFriendlyMonster minion) {
-        boolean returnValue = false;
-
+        this.flash();
         if (this.hasMinions() && this.getAmountOfMinions() >= this.amount) {
             this.sacrifice(this.minions.monsters.get(0)); //replace oldest with newest
             this.flushDeadMinions();
@@ -163,6 +204,7 @@ public class SummonerPower extends AbstractLichPower {
         this.minions.add(minion);
 
         this.summonsChanges();
+
         if (minion instanceof AbstractLichMinion) {
             //can not apply powers in the constructor. The lich class will rearrange the minions locations. Apply powers after.
             ((AbstractLichMinion) minion).applyStartPowers();
@@ -192,12 +234,6 @@ public class SummonerPower extends AbstractLichPower {
 
     public boolean hasMinions() {
         return this.minions.monsters.stream().filter(monster -> !monster.isDead).toArray().length > 0;
-    }
-
-    public boolean removeMinion(AbstractFriendlyMonster minion) {
-        //boolean returnValue = super.removeMinion(minion);
-        return false; // do not remove minion
-        //return returnValue;
     }
 
     public int getAmountOfMinions() {
@@ -251,5 +287,30 @@ public class SummonerPower extends AbstractLichPower {
         } else {
             return null;
         }
+    }
+
+    public void clearMinions() {
+        this.p_minions = new AbstractFriendlyMonster[this.amount];
+        this.minions = new MonsterGroup(this.p_minions);
+        this.minions.monsters.removeIf(Objects::isNull);
+    }
+
+    @Override
+    public void renderIcons(SpriteBatch sb, float x, float y, Color c) {
+        super.renderIcons(sb,x,y,c);
+
+        //Render minions
+        if (AbstractDungeon.getCurrRoom() != null) {
+            switch(AbstractDungeon.getCurrRoom().phase) {
+                case COMBAT:
+                    this.minions.render(sb);
+            }
+        }
+    }
+
+    @Override
+    public void onVictory(){
+        super.onVictory();
+        this.clearMinions();
     }
 }

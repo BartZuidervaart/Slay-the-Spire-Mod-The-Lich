@@ -7,7 +7,6 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import kobting.friendlyminions.characters.AbstractPlayerWithMinions;
 import ultra.lich.images.ImageLibrary;
 import ultra.lich.powers.DeadMarkedPower;
 import ultra.lich.powers.SummonerPower;
@@ -47,9 +46,9 @@ public class LegionCard extends AbstractLichCard {
 
     @Override
     public boolean canUse(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
-        if(abstractPlayer instanceof AbstractPlayerWithMinions){
-            AbstractPlayerWithMinions player = (AbstractPlayerWithMinions) abstractPlayer;
-            if(player.hasMinions()){
+        if(abstractPlayer.hasPower(SummonerPower.POWER_ID)){
+            SummonerPower caster = (SummonerPower) abstractPlayer.getPower(SummonerPower.POWER_ID);
+            if(caster.hasMinions()){
                 return true;
             } else {
                 return false;

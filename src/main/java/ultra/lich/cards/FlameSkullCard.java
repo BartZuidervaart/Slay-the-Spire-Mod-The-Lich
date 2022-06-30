@@ -29,11 +29,8 @@ public class FlameSkullCard extends AbstractLichCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster abstractMonster) {
-        if (p.hasPower(SummonerPower.POWER_ID)) {
-            SummonerPower caster = (SummonerPower) p.getPower(SummonerPower.POWER_ID);
-                FlameSkull minion = this.upgraded ? new FlameSkull(caster,3,6,1,6,-1,1) : new FlameSkull(caster,3,3,1,3,-1,1);
-                minion.attackTarget = abstractMonster;
-                addToBot(new SummonMinionAction(caster,minion));
-        }
+        FlameSkull minion = this.upgraded ? new FlameSkull(p, 3, 6, 1, 6, -1, 1) : new FlameSkull(p, 3, 3, 1, 3, -1, 1);
+        minion.attackTarget = abstractMonster;
+        addToBot(new SummonMinionAction(p, minion));
     }
 }

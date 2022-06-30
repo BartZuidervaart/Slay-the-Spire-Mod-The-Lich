@@ -17,13 +17,14 @@ public class KnowledgeFromTheGraveCard extends AbstractLichCard {
 
     public static final String ID = "TheLich:KnowledgeFromTheGraveCard";
     public static final	String NAME = "Grave robbery";
-    public static final	String DESCRIPTION = "Tribute 1. Return 1 card from your discard pile to your hand.";
-    public static final String UPGRADE_DESCRIPTION = "Tribute 1. Return 2 cards from your discard pile to your hand." ;
+    public static final	String DESCRIPTION = "Tribute 1. Return 1 card from your discard pile to your hand. Exhaust.";
+    public static final String UPGRADE_DESCRIPTION = "Tribute 1. Return 2 cards from your discard pile to your hand. Exhaust." ;
     private static final int COST = 0;
 
     public KnowledgeFromTheGraveCard() {
         super(ID, NAME, ImageLibrary.KNOWLEDGE_FROM_THE_GRAVE, COST, DESCRIPTION, UPGRADE_DESCRIPTION, AbstractCard.CardType.SKILL,
                 AbstractCard.CardRarity.COMMON, MinionTargeting.MINION);
+        this.exhaust = true;
     }
 
     public AbstractCard makeCopy() {

@@ -34,6 +34,7 @@ ultra\lich\minionactions\MinionTargeting.class
 ultra\lich\cards\WraithCard.class
 ultra\lich\actions\SummonMinionAction.class
 ultra\lich\powers\MinionPower.class
+ultra\lich\powers\SummonerPower$1.class
 ultra\lich\cards\status\FleshRot.class
 ultra\lich\cards\ElixirCard.class
 ultra\lich\keywords\Keywords.class

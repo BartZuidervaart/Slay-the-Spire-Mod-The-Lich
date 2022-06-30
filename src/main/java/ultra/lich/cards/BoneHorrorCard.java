@@ -31,10 +31,7 @@ public class BoneHorrorCard extends AbstractLichCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster abstractMonster) {
         super.use(p,abstractMonster);
-        if (p.hasPower(SummonerPower.POWER_ID)) {
-            SummonerPower caster = (SummonerPower) p.getPower(SummonerPower.POWER_ID);
-            addToBot(new SummonMinionAction(caster, new BoneHorrorMinion(caster,40,20,20,3)));
-        }
+        addToBot(new SummonMinionAction(p, new BoneHorrorMinion(p,40,20,20,3)));
     }
 
     @Override

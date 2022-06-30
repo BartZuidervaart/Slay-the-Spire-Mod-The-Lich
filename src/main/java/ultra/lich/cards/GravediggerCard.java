@@ -27,13 +27,10 @@ public class GravediggerCard extends AbstractLichCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new DiscardAction(p, p, 2, false));
-        this.addToBot(new DrawCardAction(p, 1));
-        if (p.hasPower(SummonerPower.POWER_ID)) {
-            SummonerPower caster = (SummonerPower) p.getPower(SummonerPower.POWER_ID);
-            GravediggerMinion minion = this.upgraded ? new GravediggerMinion(caster, 10, 2, 5) : new GravediggerMinion(caster, 10, 1, 0);
-            addToBot(new SummonMinionAction(caster,minion));
-        }
+        addToBot(new DiscardAction(p, p, 2, false));
+        addToBot(new DrawCardAction(p, 1));
+        GravediggerMinion minion = this.upgraded ? new GravediggerMinion(p, 10, 2, 5) : new GravediggerMinion(p, 10, 1, 0);
+        addToBot(new SummonMinionAction(p,minion));
     }
 
     @Override

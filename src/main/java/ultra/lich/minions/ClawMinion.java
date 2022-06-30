@@ -2,6 +2,7 @@ package ultra.lich.minions;
 
 import basemod.animations.SpineAnimation;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import ultra.lich.powers.SummonSicknessPower;
 import ultra.lich.powers.SummonerPower;
 
@@ -12,12 +13,12 @@ public class ClawMinion extends AbstractLichMinion {
 
     private int summonSickness;
 
-    public ClawMinion(SummonerPower caster) {
-        this(caster, 2, 3,0,1);
+    public ClawMinion(AbstractCreature summoner) {
+        this(summoner, 2, 3,0,1);
     }
 
-    public ClawMinion(SummonerPower caster, int hp, int attack, int defense, int summonSickness) {
-        super(NAME, ID, hp, new SpineAnimation("img/minions/Arm.atlas","img/minions/Arm.json",1f), "animtion0", caster,attack,defense);
+    public ClawMinion(AbstractCreature summoner, int hp, int attack, int defense, int summonSickness) {
+        super(NAME, ID, hp, new SpineAnimation("img/minions/Arm.atlas","img/minions/Arm.json",1f), "animtion0", summoner,attack,defense);
         this.summonSickness = summonSickness;
     }
 

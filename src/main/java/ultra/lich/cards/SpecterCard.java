@@ -29,10 +29,7 @@ public class SpecterCard extends AbstractLichCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster abstractMonster) {
-        if (p.hasPower(SummonerPower.POWER_ID)) {
-            SummonerPower caster = (SummonerPower) p.getPower(SummonerPower.POWER_ID);
-            SpecterMinion minion = this.upgraded ? new SpecterMinion(caster, 15, 7, 0) : new SpecterMinion(caster, 10, 5, 0);
-            addToBot(new SummonMinionAction(caster,minion));
-        }
+        SpecterMinion minion = this.upgraded ? new SpecterMinion(p, 15, 7, 0) : new SpecterMinion(p, 10, 5, 0);
+        addToBot(new SummonMinionAction(p, minion));
     }
 }

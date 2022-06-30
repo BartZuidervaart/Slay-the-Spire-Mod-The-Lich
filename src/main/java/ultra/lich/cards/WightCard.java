@@ -35,10 +35,9 @@ public class WightCard extends AbstractLichCard {
         if (p.hasPower(SummonerPower.POWER_ID)) {
             SummonerPower caster = (SummonerPower) p.getPower(SummonerPower.POWER_ID);
             addToBot(new SacrificeMinionAction(caster, target));
-
-            WightMinion minion = new WightMinion(caster,10,5,0,1,3,0,5,5);
-            WightMinion upgradedMinion = new WightMinion(caster,15,7,0,1,5,0,10,5);
-            addToBot(new SummonMinionAction(caster, this.upgraded ? upgradedMinion : minion));
         }
+            WightMinion minion = new WightMinion(p,10,5,0,1,3,0,5,5);
+            WightMinion upgradedMinion = new WightMinion(p,15,7,0,1,5,0,10,5);
+            addToBot(new SummonMinionAction(p, this.upgraded ? upgradedMinion : minion));
     }
 }

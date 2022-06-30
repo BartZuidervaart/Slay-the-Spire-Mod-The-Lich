@@ -24,15 +24,12 @@ public class HordeCard extends AbstractLichCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (p.hasPower(SummonerPower.POWER_ID)) {
-            SummonerPower caster = (SummonerPower) p.getPower(SummonerPower.POWER_ID);
             for(int i = 0; i < 4; i++){
                 ZombieMinion minion = this.upgraded ?
-                        new ZombieMinion(caster, 10,3,0, 5) :
-                        new ZombieMinion(caster, 5,3,0, 5);
-                addToBot(new SummonMinionAction(caster,minion));
+                        new ZombieMinion(p, 10,3,0, 5) :
+                        new ZombieMinion(p, 5,3,0, 5);
+                addToBot(new SummonMinionAction(p,minion));
             }
-        }
     }
 
     public AbstractCard makeCopy() {
